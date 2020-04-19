@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Switch, Route } from "react-router-dom";
 import CreateProject from "./component/project/CreateProject";
+import Signup from "./component/user/Signup";
 import Nave from "./component/navbar/Nave";
 
 export default class App extends Component {
@@ -31,6 +32,7 @@ export default class App extends Component {
             path="/create"
             render={() => <CreateProject user={this.state.user} />}
           />
+          <Route path="/signup" component={Signup} />} />
         </Switch>
       </div>
     );

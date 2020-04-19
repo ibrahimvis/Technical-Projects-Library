@@ -3,9 +3,11 @@ import { Form, Container, Button } from "react-bootstrap";
 import axios from "axios";
 
 export default class CreateProject extends Component {
+
   // state = {
   //   user: this.state.use._id,
   // };
+
   createHandler = async () => {
     try {
       let data = await axios.post("/api/project/create", this.state);
@@ -14,11 +16,13 @@ export default class CreateProject extends Component {
       console.log(err);
     }
   };
+
   changeHandler = (e) => {
     let temp = { ...this.state };
     temp[e.target.name] = e.target.value;
     this.setState(temp);
   };
+
   render() {
     return (
       <div>
