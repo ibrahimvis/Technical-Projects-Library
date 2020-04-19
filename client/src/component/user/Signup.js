@@ -5,15 +5,18 @@ import Axios from "axios";
 export default class Signup extends Component {
   state = {};
 
-  registerHandler = async () => {
-    // e.preventDefault();
-    try {
-      let data = await Axios.post("/api/auth//signup", this.state);
-      //   props.history.push("/login");
-      console.log(data);
-    } catch (err) {
-      console.log(err);
-    }
+  registerHandler = async (e) => {
+    e.preventDefault();
+    Axios.post("/api/auth/signup", this.state)
+      .then((res) => {
+        // console.log(res);
+        if (res.status == 200) {
+          this.props.history.push("/login");
+        } else {
+          console.log(res)
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   changeHandler = (e) => {
@@ -70,7 +73,7 @@ export default class Signup extends Component {
               <Button
                 variant="primary"
                 type="submit"
-                onClick={this.registerHandler}
+                onClick={(e) => this.registerHandler(e)}
               >
                 Submit
               </Button>

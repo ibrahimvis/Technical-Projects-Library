@@ -15,12 +15,13 @@ router.post("/signup", async (req, res) => {
   try {
     let { firstName, lastName, email, password } = req.body;
     let user = new User({ firstName, lastName, email, password });
-    let userSaved = await user.save();
-    res.status(200).json({ user: userSaved });
+    await user.save();
+    user.password = await '';    
+    res.status(200).json(user);
   } catch (error) {
     if (error.code == 11000)
-      res.status(400).json({ message: "Email Exists!!" });
-    else res.status(400).json(error);
+      res.status(401).json({ message: "Email Exists!!" });
+    else res.status(401).json(error);
   }
 });
 
@@ -89,5 +90,7 @@ router.get("/user", isLoggedIn, async (req, res) => {
   }
   //
 });
+
+
 
 module.exports = router;

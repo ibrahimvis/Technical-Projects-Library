@@ -18,7 +18,7 @@ export default class Nave extends Component {
         <Nav.Link as={Link} to="/login">
           Login
         </Nav.Link>
-        <Nav.Link as={Link} to="/register">
+        <Nav.Link as={Link} to="/signup">
           Register
         </Nav.Link>
       </>
