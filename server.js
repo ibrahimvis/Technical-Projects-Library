@@ -6,7 +6,8 @@ const express = require("express");
 const cors = require("cors");
 
 const authUserRoute = require("./routes/auth.route");
-const projectRoute = require("./routes/profile.route");
+const projectRoute  = require("./routes/project.route");
+const adminRoute    = require("./routes/admin.route");
 
 const app = express();
 const port = process.env.PORT;
@@ -17,5 +18,6 @@ app.use(express.json());
 
 app.use("/api/auth", authUserRoute);
 app.use("/api/project", projectRoute);
+app.use("/api/admin", adminRoute);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
