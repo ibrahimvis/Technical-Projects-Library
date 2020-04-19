@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Switch, Route } from "react-router-dom";
 import CreateProject from "./component/project/CreateProject";
-import { Signup } from "./component/user/Signup";
+import Signup from "./component/user/Signup";
+
 export default class App extends Component {
   state = {
     user: null,

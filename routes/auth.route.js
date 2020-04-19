@@ -27,15 +27,15 @@ router.post("/signup", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     let user = await User.findOne({ email: req.body.email });
-    if (!user) throw {message: "Email doesn't exists"};
+    if (!user) throw { message: "Email doesn't exists" };
 
     const checkPass = await user.verifyPassword(req.body.password);
     if (!checkPass) {
       res.status(400).json({ message: "Password Incorrect!" });
     } else {
-        user['password'] = '';
+      user["password"] = "";
       const payload = {
-        user
+        user,
       };
 
       jwt.sign(
