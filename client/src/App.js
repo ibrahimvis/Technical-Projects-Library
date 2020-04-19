@@ -5,8 +5,9 @@ import CreateProject from "./component/project/CreateProject";
 import Signup from "./component/user/Signup";
 import ChangePassword from "./component/user/ChangePassword";
 import Nave from "./component/navbar/Nave";
+import {Login} from "./component/user/Login";
+import AllProjects from './component/project/AllProjects';
 import OneProject from "./component/project/OneProject";
-import AllProjects from "./component/project/AllProjects";
 
 export default class App extends Component {
   state = {
@@ -44,10 +45,14 @@ export default class App extends Component {
           /> */}
           <Route path="/allproject" component={AllProjects} />
           <Route path="/signup" component={Signup} />} />
+
+          <Route path= '/login' render ={ (props) => <Login  {...props} userLogin = {this.userLogin}/>} />
+
           <Route
             path="/changepassword"
             render={(props) => <ChangePassword {...props} user={this.state.user} />}
           />
+
         </Switch>
       </div>
     );
