@@ -31,7 +31,7 @@ export default class Nave extends Component {
           </Nav>
           <Nav>
             <Nav.Link as={Link} to="/" user={this.props.user}>
-              Profile
+              Projects
             </Nav.Link>
             {authNavDetails}
           </Nav>
