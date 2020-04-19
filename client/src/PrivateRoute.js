@@ -14,11 +14,13 @@ export default function PrivateRoute({
   ...rest //all other props
 }) {
   return (
-    <Route
-      {...rest}
-      render={(props) =>
-        isAuth ? <Component {...rest} {...props} /> : <Redirect to="/login" />
-      }
-    />
+    <>
+      <Route
+        {...rest}
+        render={(props) =>
+          isAuth ? <Component {...rest} {...props} /> : <Redirect to="/login" />
+        }
+      />
+    </>
   );
 }

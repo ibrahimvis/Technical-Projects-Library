@@ -9,17 +9,18 @@ export const Login = (props) => {
     setLogin({ ...login, [name]: value });
   };
   useEffect(() => {
-    console.log(login);
+    //console.log(login);
   });
 
   let onSubmit = (e) => {
     e.preventDefault();
     Axios.post("/api/auth/login", login)
       .then((res) => {
+        console.log(res);
         if (res.data.token) {
           localStorage.setItem("token", res.data.token);
-          props.userLogin();
           props.history.push("/allproject");
+          props.userLogin(localStorage.getItem("token"));
         } else {
           console.log("email or password not correct");
         }
