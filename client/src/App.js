@@ -5,6 +5,8 @@ import CreateProject from "./component/project/CreateProject";
 import Signup from "./component/user/Signup";
 import ChangePassword from "./component/user/ChangePassword";
 import Nave from "./component/navbar/Nave";
+import OneProject from "./component/project/OneProject";
+import AllProjects from "./component/project/AllProjects";
 
 export default class App extends Component {
   state = {
@@ -33,6 +35,14 @@ export default class App extends Component {
             path="/create"
             render={() => <CreateProject user={this.state.user} />}
           />
+          <Route path="/api/project/:id" component={OneProject} />
+          {/* <PrivateRoute
+            exact
+            path="/allproject"
+            isAuth={isAuth}
+            component={AllProjects}
+          /> */}
+          <Route path="/allproject" component={AllProjects} />
           <Route path="/signup" component={Signup} />} />
           <Route
             path="/changepassword"
