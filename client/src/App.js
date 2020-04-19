@@ -11,14 +11,25 @@ import OneProject from "./component/project/OneProject";
 import jwt_decode from "jwt-decode";
 export default class App extends Component {
   state = {
+    isAuth: false,
+    // user: { _id: "5e9c1cd7bc5da5114f224aab" }, // temp change it to null
     user: null,
+    message: null,
     isLogin: false,
   };
 
+  logoutHandler = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("token");
+    this.setState({
+      isAuth: false,
+      user: null,
+      message: null,
+    });
+  };
   componentDidMount() {
     this.userLogin();
   }
-
   userLogin = () => {
     if (localStorage.token) {
       let token = localStorage.token;
