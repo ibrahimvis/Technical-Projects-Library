@@ -3,9 +3,9 @@ import { Form, Container, Button } from "react-bootstrap";
 import axios from "axios";
 
 export default class CreateProject extends Component {
-  state = {
-    user: this.state.use._id,
-  };
+  // state = {
+  //   user: this.state.use._id,
+  // };
   createHandler = async () => {
     try {
       let data = await axios.post("/api/project/create", this.state);

@@ -27,15 +27,15 @@ router.post("/signup", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     let user = await User.findOne({ email: req.body.email });
-    if (!user) throw {message: "Email doesn't exists"};
+    if (!user) throw { message: "Email doesn't exists" };
 
     const checkPass = await user.verifyPassword(req.body.password);
     if (!checkPass) {
       res.status(400).json({ message: "Password Incorrect!" });
     } else {
-        user['password'] = '';
+      user["password"] = "";
       const payload = {
-        user
+        user,
       };
 
       jwt.sign(
@@ -73,6 +73,21 @@ router.post("/ChangePassword", isLoggedIn, async (req, res) => {
   } catch (error) {
     res.status(400).json(error);
   }
+});
+
+router.get("/user", isLoggedIn, async (req, res) => {
+  // console.log(req.user);
+
+  try {
+    let user = await User.findById(req.user.id, "-password");
+
+    if (!user) throw error;
+
+    res.status(200).json({ user });
+  } catch (error) {
+    res.status(400).json({ message: "something went wrong!" });
+  }
+  //
 });
 
 module.exports = router;
