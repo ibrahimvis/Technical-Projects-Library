@@ -9,6 +9,7 @@ import { Login } from "./component/user/Login";
 import AllProjects from "./component/project/AllProjects";
 import OneProject from "./component/project/OneProject";
 import jwt_decode from "jwt-decode";
+import PrivateRoute from "./PrivateRoute";
 export default class App extends Component {
   state = {
     isAuth: false,
@@ -62,6 +63,14 @@ export default class App extends Component {
             isAuth={isAuth}
             component={AllProjects}
           /> */}
+          <PrivateRoute
+            exact
+            path="/profile"
+            isAuth={isAuth}
+            user={user}
+            update={this.updateUser}
+            component={ProfileEdit}
+          />
           <Route path="/allproject" component={AllProjects} />
           <Route path="/signup" component={Signup} />} />
           <Route
