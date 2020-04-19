@@ -8,8 +8,7 @@ module.exports = (req, res, next) => {
     return res.status(400).json({ message: "Token not found please log in" });
   } else {
     try {
-      const decoded = jwt.verify(token, process.env.SECRET);
-      req.user = decoded.user;
+      req.user = jwt.decode(token, process.env.SECRET).user;
       next();
     } catch (error) {
       return res.status(400).json({ message: "Your token is invalid" });

@@ -32,7 +32,7 @@ router.post("/login", async (req, res) => {
 
     const checkPass = await user.verifyPassword(req.body.password);
     if (!checkPass) {
-      res.status(400).json({ message: "Password Incorrect!" });
+      res.status(401).json({ message: "Password Incorrect!" });
     } else {
       user["password"] = "";
       const payload = {
@@ -72,12 +72,12 @@ router.post("/ChangePassword", async (req, res) => {
         let user = await User.findByIdAndUpdate(_id, {
           $set: { password: pass },
         });
-        user.password = '';
+        user.password = "";
         res.status(200).json({ user, message: "Updated !!" });
       });
     }
   } catch (error) {
-    res.status(400).json(error);
+    res.status(500).json(error);
   }
 });
 
@@ -85,13 +85,13 @@ router.get("/user", isLoggedIn, async (req, res) => {
   // console.log(req.user);
 
   try {
-    let user = await User.findById(req.user.id, "-password");
+    let user = await User.findById(req.user._id, "-password");
 
     if (!user) throw error;
 
     res.status(200).json({ user });
   } catch (error) {
-    res.status(400).json({ message: "something went wrong!" });
+    res.status(500).json({ message: "something went wrong!" });
   }
   //
 });
