@@ -33,7 +33,7 @@ router.get("/:id", async (req, res) => {
 });
 
 /** Create a Project */
-router.post("/create", async (req, res) => {
+router.post("/create", isLoggedIn, async (req, res) => {
   try {
     let { image, title, contributor, description, github, user } = req.body;
     let project = await new Project({

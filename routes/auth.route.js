@@ -75,4 +75,19 @@ router.post("/ChangePassword", isLoggedIn, async (req, res) => {
   }
 });
 
+router.get("/user", isLoggedIn, async (req, res) => {
+  // console.log(req.user);
+
+  try {
+    let user = await User.findById(req.user.id, "-password");
+
+    if (!user) throw error;
+
+    res.status(200).json({ user });
+  } catch (error) {
+    res.status(400).json({ message: "something went wrong!" });
+  }
+  //
+});
+
 module.exports = router;
