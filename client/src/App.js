@@ -4,7 +4,8 @@ import { Switch, Route } from "react-router-dom";
 import CreateProject from "./component/project/CreateProject";
 import Signup from "./component/user/Signup";
 import Nave from "./component/navbar/Nave";
-
+import {Login} from "./component/user/Login";
+import AllProjects from './component/project/AllProjects';
 export default class App extends Component {
   state = {
     isAuth: false,
@@ -33,6 +34,7 @@ export default class App extends Component {
             render={() => <CreateProject user={this.state.user} />}
           />
           <Route path="/signup" component={Signup} />} />
+          <Route path= '/login' render ={ (props) => <Login  {...props} userLogin = {this.userLogin}/>} />
         </Switch>
       </div>
     );
