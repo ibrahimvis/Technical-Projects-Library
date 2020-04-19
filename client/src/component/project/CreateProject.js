@@ -4,7 +4,7 @@ import axios from "axios";
 
 export default class CreateProject extends Component {
   state = {
-    user: this.state.use._id,
+    user: this.state,
   };
   createHandler = async () => {
     try {
