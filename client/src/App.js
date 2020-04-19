@@ -5,13 +5,18 @@ import CreateProject from "./component/project/CreateProject";
 import Signup from "./component/user/Signup";
 import ChangePassword from "./component/user/ChangePassword";
 import Nave from "./component/navbar/Nave";
-import OneProject from "./component/project/OneProject";
+import { Login } from "./component/user/Login";
 import AllProjects from "./component/project/AllProjects";
+import OneProject from "./component/project/OneProject";
+import axios from "axios";
+// import jwt_decode from "jsonwebtoken";
+
+require("dotenv").config();
 
 export default class App extends Component {
   state = {
     isAuth: false,
-    user: {_id: "5e9c1cd7bc5da5114f224aab"}, // temp change it to null
+    user: null, // temp change it to null
     message: null,
   };
 
@@ -25,8 +30,30 @@ export default class App extends Component {
     });
   };
 
+  userLogin = async (token) => {
+    try {
+      let data = await axios.get("/api/auth/user", {
+        headers: { "x-auth-token": token },
+      });
+
+      // console.log("getProfile", data.data.user);
+      this.setState({
+        isAuth: true,
+        user: data.data.user,
+        message: null,
+      });
+    } catch (err) {
+      this.setState({
+        user: null,
+        isAuth: false,
+        // message: err.response.data.message,
+      });
+    }
+  };
+
   render() {
     const { isAuth, message, user } = this.state;
+    console.log(this.state)
     return (
       <div>
         <Nave user={user} logout={this.logoutHandler} />
@@ -45,8 +72,14 @@ export default class App extends Component {
           <Route path="/allproject" component={AllProjects} />
           <Route path="/signup" component={Signup} />} />
           <Route
+            path="/login"
+            render={(props) => <Login {...props} userLogin={this.userLogin} />}
+          />
+          <Route
             path="/changepassword"
-            render={(props) => <ChangePassword {...props} user={this.state.user} />}
+            render={(props) => (
+              <ChangePassword {...props} user={this.state.user} />
+            )}
           />
         </Switch>
       </div>
