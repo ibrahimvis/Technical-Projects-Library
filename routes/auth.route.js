@@ -16,7 +16,7 @@ router.post("/signup", async (req, res) => {
     let { firstName, lastName, email, password } = req.body;
     let user = new User({ firstName, lastName, email, password });
     await user.save();
-    user.password = await '';    
+    user.password = await "";
     res.status(200).json(user);
   } catch (error) {
     if (error.code == 11000)
@@ -51,26 +51,31 @@ router.post("/login", async (req, res) => {
       );
     }
   } catch (error) {
-    res.status(400).json(error);
+    res.status(401).json(error);
   }
 });
 
-router.post("/ChangePassword", isLoggedIn, async (req, res) => {
+router.post("/ChangePassword", async (req, res) => {
   try {
-    let { _id, password } = req.body;
+    let { _id, oldpassword, newpassword } = req.body;
+    let user = await User.findById(_id);
+    if (!user) throw { message: "user id doesn't exists" };
 
-    bcrypt.hash(password, 10, async (err, pass) => {
-      if (err)
-        res.status(500).json({ message: "Couldn't update the password" });
+    const checkPass = await user.verifyPassword(oldpassword);
+    if (!checkPass) {
+      res.status(401).json({ message: "Password Incorrect!" });
+    } else {
+      bcrypt.hash(newpassword, 10, async (err, pass) => {
+        if (err)
+          res.status(500).json({ message: "Couldn't update the password" });
 
-      let user = await User.findByIdAndUpdate(_id, {
-        $set: { password: pass },
+        let user = await User.findByIdAndUpdate(_id, {
+          $set: { password: pass },
+        });
+        user.password = '';
+        res.status(200).json({ user, message: "Updated !!" });
       });
-
-      if (!user) throw error;
-
-      res.status(200).json({ message: "Updated !!" });
-    });
+    }
   } catch (error) {
     res.status(400).json(error);
   }
@@ -90,7 +95,5 @@ router.get("/user", isLoggedIn, async (req, res) => {
   }
   //
 });
-
-
 
 module.exports = router;
