@@ -9,7 +9,7 @@ import { Login } from "./component/user/Login";
 import AllProjects from "./component/project/AllProjects";
 import OneProject from "./component/project/OneProject";
 import axios from "axios";
-// import jwt_decode from "jsonwebtoken";
+import { decode } from "jsonwebtoken";
 
 require("dotenv").config();
 
@@ -51,9 +51,22 @@ export default class App extends Component {
     }
   };
 
+  componentDidMount() {
+    let token = localStorage.getItem("token");
+    if (!(token == null)) {
+      let user = decode(token);
+
+      if (!user) {
+        localStorage.removeItem("token");
+      }
+
+      this.userLogin(token);
+    }
+  }
+
   render() {
     const { isAuth, message, user } = this.state;
-    console.log(this.state)
+    console.log(this.state);
     return (
       <div>
         <Nave user={user} logout={this.logoutHandler} />
