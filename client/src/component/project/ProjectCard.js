@@ -13,9 +13,15 @@ export default class ProjectCard extends Component {
             <Card.Img variant="top" src={image} />
             <Card.Body>
               <Card.Title>Project Title {title}</Card.Title>
-              <Card.Text>
-                Dony By : {user.firstName} {user.lastName}
-              </Card.Text>
+              {user.firstName != null ? (
+                <Card.Text>
+                  Dony By : {user.firstName} {user.lastName}
+                </Card.Text>
+              ) : (
+                <Card.Text>
+                  Dony By : user deleted from the db
+                </Card.Text>
+              )}
               <Button as={Link} to={`/api/project/${_id}`} variant="primary">
                 More Info
               </Button>
