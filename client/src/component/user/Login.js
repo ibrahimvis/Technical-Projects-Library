@@ -19,7 +19,7 @@ export const Login = (props) => {
         console.log(res);
         if (res.data.token) {
           localStorage.setItem("token", res.data.token);
-          props.history.push("/AllProjects");
+          props.history.push("/allproject");
           props.userLogin(localStorage.getItem("token"));
         } else {
           console.log("email or password not correct");
