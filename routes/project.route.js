@@ -11,7 +11,7 @@ let isLoggedIn = require("../config/config");
 router.get("/", async (req, res) => {
   try {
     let projects = await Project.find({}).populate("user", "-password");
-    res.json({ projects }).status(200);
+    res.status(200).json({ projects });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "something went south check the logs" });
@@ -25,7 +25,7 @@ router.get("/:id", async (req, res) => {
       "user",
       "-password"
     );
-    res.json({ project }).status(200);
+    res.status(200).json({ project });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "something went south check the logs" });
@@ -61,7 +61,7 @@ router.post("/update", isLoggedIn, async (req, res) => {
     });
 
     let project = await Project.findById(_id);
-    res.json({ project }).status(200);
+    res.status(200).json({ project });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "something went south check the logs" });
@@ -72,7 +72,7 @@ router.post("/update", isLoggedIn, async (req, res) => {
 router.get("/delete/:id", isLoggedIn, async (req, res) => {
   try {
     let project = await Project.findByIdAndDelete(req.params.id);
-    res.json({ project }).status(200);
+    res.status(200).json({ project });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "something went south check the logs" });
