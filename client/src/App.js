@@ -9,6 +9,8 @@ import { Login } from "./component/user/Login";
 import Profile from "./component/user/Profile";
 import AllProjects from "./component/project/AllProjects";
 import OneProject from "./component/project/OneProject";
+import EditProject from "./component/project/EditProject";
+
 import axios from "axios";
 import { decode } from "jsonwebtoken";
 import PrivateRoute from "./PrivateRoute";
@@ -81,7 +83,7 @@ export default class App extends Component {
               <CreateProject {...props} user={this.state.user} />
             )}
           />
-          <Route path="/api/project/:id" component={OneProject} />
+          <Route path="/api/project/EditeProject/:id" component={EditProject} />
           {/* <PrivateRoute
             exact
             path="/allproject"
@@ -96,6 +98,7 @@ export default class App extends Component {
             component={Profile}
           />
           <Route path="/allproject" component={AllProjects} />
+          <Route path="/api/project/:id" component={OneProject} />
           <Route path="/signup" component={Signup} />} />
           <Route
             path="/login"

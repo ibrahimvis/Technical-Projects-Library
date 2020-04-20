@@ -1,6 +1,11 @@
+//------------------------------------------------
+// USER
+
+//------------------------------------------------
 import React, { Component } from "react";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import EditProject from "../project/EditProject";
 import { Redirect } from "react-router-dom";
 export default class ProjectCard extends Component {
   // ALL PROJECT HOME PAGE
@@ -26,11 +31,8 @@ export default class ProjectCard extends Component {
               <Card.Text>
                 Dony By : {user.firstName} {user.lastName}
               </Card.Text>
-              <Button as={Link} to={`/api/project/${_id}`} variant="primary">
-                More Info
-              </Button>
 
-              {/* {localStorage.getItem("token") == null ? (
+              {localStorage.getItem("token") == null ? (
                 <Button as={Link} to={`/api/project/${_id}`} variant="primary">
                   More Info
                 </Button>
@@ -54,7 +56,7 @@ export default class ProjectCard extends Component {
                     Delete
                   </Button>
                 </>
-              )} */}
+              )}
             </Card.Body>
           </Card>
         </div>

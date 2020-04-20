@@ -23,7 +23,7 @@ export default class OneProject extends Component {
 
   render() {
     // <div>{this.state.project.title}</div>
-    let {
+    const {
       title,
       user,
       _id,
