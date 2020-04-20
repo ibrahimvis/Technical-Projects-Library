@@ -6,6 +6,13 @@ export default class ProjectCard extends Component {
   // SENDING THE PROJECT OBJ
   render() {
     let { title, user, _id, image } = this.props.project;
+    // if (!localStorage.getItem) {
+    //   console.log("empty");
+    // } else {
+    //   // not login there is no Token
+    //   // console.log("Not empty");
+    //   // let btn=
+    // }
     return (
       <div>
         <div className="mb-5">
@@ -18,9 +25,7 @@ export default class ProjectCard extends Component {
                   Dony By : {user.firstName} {user.lastName}
                 </Card.Text>
               ) : (
-                <Card.Text>
-                  Dony By : user deleted from the db
-                </Card.Text>
+                <Card.Text>Dony By : user deleted from the db</Card.Text>
               )}
               <Button as={Link} to={`/api/project/${_id}`} variant="primary">
                 More Info

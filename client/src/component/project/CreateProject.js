@@ -7,10 +7,14 @@ export default class CreateProject extends Component {
     user: this.props.user._id, //user obj
   };
 
-  createHandler = async (e) => {
+  createHandler = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3002/api/project/create", this.state)
+      .post("http://localhost:3002/api/project/create", this.state, {
+        headers: {
+          "x-auth-token": localStorage.getItem("token"),
+        },
+      })
       .then((res) => {
         console.log(res);
         if (res.status == 200) {

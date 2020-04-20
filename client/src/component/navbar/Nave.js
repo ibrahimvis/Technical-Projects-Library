@@ -30,7 +30,7 @@ export default class Nave extends Component {
             <Navbar.Brand>Technical Projects Library</Navbar.Brand>
           </Nav>
           <Nav>
-            <Nav.Link as={Link} to="/" user={this.props.user}>
+            <Nav.Link as={Link} to="/allproject" user={this.props.user}>
               Projects
             </Nav.Link>
             {authNavDetails}
