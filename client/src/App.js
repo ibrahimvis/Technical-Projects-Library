@@ -9,6 +9,10 @@ import { Login } from "./component/user/Login";
 import AllProjects from "./component/project/AllProjects";
 import OneProject from "./component/project/OneProject";
 import axios from "axios";
+import EditProject from "./component/project/EditProject";
+
+
+
 // import jwt_decode from "jsonwebtoken";
 
 require("dotenv").config();
@@ -53,7 +57,7 @@ export default class App extends Component {
 
   render() {
     const { isAuth, message, user } = this.state;
-    console.log(this.state)
+    console.log(this.state);
     return (
       <div>
         <Nave user={user} logout={this.logoutHandler} />
@@ -62,6 +66,13 @@ export default class App extends Component {
             path="/create"
             render={() => <CreateProject user={this.state.user} />}
           />
+
+          <Route
+            path="/update/:id"
+            render={() => <EditProject user={this.state.user} />}
+          />
+
+
           <Route path="/api/project/:id" component={OneProject} />
           {/* <PrivateRoute
             exact
