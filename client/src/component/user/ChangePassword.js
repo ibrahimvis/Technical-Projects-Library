@@ -3,30 +3,29 @@ import { Row, Form, Col, Button } from "react-bootstrap";
 import Axios from "axios";
 
 export default class ChangePassword extends Component {
-  // state = { _id: this.props.user._id }; // need to be checked when login works
+  state = { _id: this.props.user._id }; // need to be checked when login works
 
-  // changePasswordHandler = async (e) => {
-  //   e.preventDefault();
-  //   Axios.post("/api/auth/ChangePassword", this.state)
-  //     .then((res) => {
-  //       console.log(res);
-  //       if (res.status == 200) {
-  //         this.props.history.push("/login");
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);        
-  //     });
-  // };
+  changePasswordHandler = async (e) => {
+    e.preventDefault();
+    Axios.post("/api/auth/ChangePassword", this.state)
+      .then((res) => {
+        console.log(res);
+        if (res.status == 200) {
+          this.props.history.push("/login");
+        }
+      })
+      .catch((err) => {
+        console.log(err);        
+      });
+  };
 
-  // changeHandler = (e) => {
-  //   let temp = { ...this.state };
-  //   temp[e.target.name] = e.target.value;
-  //   this.setState(temp);
-  // };
+  changeHandler = (e) => {
+    let temp = { ...this.state };
+    temp[e.target.name] = e.target.value;
+    this.setState(temp);
+  };
 
   render() {
-    console.log(this.props.user)
     return (
       <>
         <Form>
