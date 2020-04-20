@@ -15,12 +15,13 @@ export default class ChangePassword extends Component {
         }
       })
       .catch((err) => {
-        console.log(err);        
+        console.log(err);
       });
   };
 
   changeHandler = (e) => {
-    let temp = { ...this.state };
+    let temp = { ...this.state }; //  temp = { _id: this.props.user._id
+
     temp[e.target.name] = e.target.value;
     this.setState(temp);
   };

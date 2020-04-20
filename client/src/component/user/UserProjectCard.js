@@ -28,9 +28,6 @@ export default class ProjectCard extends Component {
             <Card.Img variant="top" src={image} />
             <Card.Body>
               <Card.Title>Project Title {title}</Card.Title>
-              <Card.Text>
-                Dony By : {user.firstName} {user.lastName}
-              </Card.Text>
 
               {localStorage.getItem("token") == null ? (
                 <Button as={Link} to={`/api/project/${_id}`} variant="primary">
@@ -54,6 +51,14 @@ export default class ProjectCard extends Component {
                     variant="primary"
                   >
                     Delete
+                  </Button>
+                  <Button
+                    className="ml-5"
+                    as={Link}
+                    to={`/api/project/${_id}`}
+                    variant="primary"
+                  >
+                    more info
                   </Button>
                 </>
               )}
