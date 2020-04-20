@@ -44,6 +44,15 @@ export default class Profile extends Component {
               >
                 Add project
               </Button>
+              <Button
+                className="ml-5"
+                as={Link}
+                to={`/ChangePassword`}
+                user={this.state.user}
+                variant="info"
+              >
+                Change Password
+              </Button>
               {allproject}
               {/* {console.log(this.state.project)} */}
             </Col>
