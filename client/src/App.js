@@ -21,6 +21,7 @@ export default class App extends Component {
     user: null, // temp change it to null
     message: null,
     isLogin: false,
+    waiting: false,
   };
 
   logoutHandler = (e) => {
@@ -32,7 +33,11 @@ export default class App extends Component {
       message: null,
     });
   };
-
+  authLogin = () => {
+    this.setState({
+      isAuth: true,
+    });
+  };
   userLogin = async (token) => {
     try {
       let data = await axios.get("/api/auth/user", {
@@ -44,11 +49,13 @@ export default class App extends Component {
         isAuth: true,
         user: data.data.user,
         message: null,
+        waiting: true,
       });
     } catch (err) {
       this.setState({
         user: null,
         isAuth: false,
+        waiting: true,
         // message: err.response.data.message,
       });
     }
@@ -69,7 +76,7 @@ export default class App extends Component {
 
   render() {
     const { isAuth, message, user } = this.state;
-    // console.log("app    " + user);
+    // console.log(thi);
     console.log(this.state.isAuth);
 
     return (
@@ -89,20 +96,28 @@ export default class App extends Component {
             isAuth={isAuth}
             component={AllProjects}
           /> */}
-          <PrivateRoute
-            exact
-            path="/profile"
-            isAuth={isAuth}
-            user={user}
-            component={Profile}
-          />
+          {this.state.waiting && (
+            <PrivateRoute
+              exact
+              path="/profile"
+              isAuth={isAuth}
+              user={user}
+              component={Profile}
+            />
+          )}
           {/* <Route path="/profile" render={() => <Profile user={user} />} /> */}
           <Route path="/allproject" component={AllProjects} />
           <Route path="/api/project/:id" component={OneProject} />
           <Route path="/signup" component={Signup} />} />
           <Route
             path="/login"
-            render={(props) => <Login {...props} userLogin={this.userLogin} />}
+            render={(props) => (
+              <Login
+                {...props}
+                authLogin={this.authLogin}
+                userLogin={this.userLogin}
+              />
+            )}
           />
           <Route
             path="/changepassword"
