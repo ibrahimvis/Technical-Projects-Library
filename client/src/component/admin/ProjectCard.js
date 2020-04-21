@@ -12,7 +12,7 @@ export default class ProjectCard extends Component {
           "x-auth-token": localStorage.getItem("token"),
         },
       });
-      console.log(data.data)
+      console.log(data.data);
       if (data.status === 200) {
         this.setState({ isDeleted: true });
       } else {
@@ -20,7 +20,7 @@ export default class ProjectCard extends Component {
     } catch (error) {}
   };
 
-  render() {      
+  render() {
     const { _id, title } = this.props.project;
     const { firstName, lastName, email } = this.props.project.user;
     const index = this.props.index;
@@ -29,8 +29,16 @@ export default class ProjectCard extends Component {
       <tr>
         <td>{index + 1}</td>
         <td>{title}</td>
-        <td>{firstName} {lastName}</td>
-        <td>{email}</td>
+        {this.props.project.user ? (
+          <>
+            <td>
+              {firstName} {lastName}
+            </td>
+            <td>{email}</td>
+          </>
+        ) : (
+          <></>
+        )}
         <td>
           <Button
             variant="success"
