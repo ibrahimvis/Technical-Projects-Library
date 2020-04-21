@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ProjectCard from './ProjectCard';
 
 export default class AllProjects extends Component {
   render() {
@@ -7,21 +8,21 @@ export default class AllProjects extends Component {
         <thead>
           <tr>
             <th>#</th>
-            <th></th>
-            <th>Last Name</th>
-            <th>Email</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>email</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-          {this.props.users.map((user, key) => {
+          {this.props.projects.map((project, key) => {
             return (
-              <UserCard
+              <ProjectCard
                 key={key}
                 index={key}
-                user={user}
-                onEditClick={() => this.props.onEditClick(user)}
+                project={project}
+                onEditClick={() => this.props.onEditClick(project)}
               />
             );
           })}
