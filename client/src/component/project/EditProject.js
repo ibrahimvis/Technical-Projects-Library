@@ -60,7 +60,6 @@ export default class EditProject extends Component {
                 custom
               /> */}
                     <Form.Control
-                      placeholder="image"
                       name="image"
                       onChange={(e) => this.changeHandler(e)}
                     />
