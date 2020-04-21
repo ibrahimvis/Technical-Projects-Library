@@ -49,7 +49,7 @@ export default class Profile extends Component {
                 as={Link}
                 to={`/create`}
                 user={this.state.user}
-                variant="primary"
+                variant="success" block
               >
                 Add project
               </Button>
