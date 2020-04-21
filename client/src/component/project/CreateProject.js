@@ -3,18 +3,27 @@ import { Form, Container, Button } from "react-bootstrap";
 import axios from "axios";
 
 export default class CreateProject extends Component {
+  state = {
+    user: this.props.user._id, //user obj
+  };
 
-  // state = {
-  //   user: this.state.use._id,
-  // };
-
-  createHandler = async () => {
-    try {
-      let data = await axios.post("/api/project/create", this.state);
-      console.log(data);
-    } catch (err) {
-      console.log(err);
-    }
+  createHandler = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:3002/api/project/create", this.state, {
+        headers: {
+          "x-auth-token": localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.status == 200) {
+          this.props.history.push("/profile");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   changeHandler = (e) => {
@@ -24,6 +33,9 @@ export default class CreateProject extends Component {
   };
 
   render() {
+    // let { user } = this.state;
+    // console.log(user);
+    console.log(this.state);
     return (
       <div>
         <Container>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Form } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCard";
 import axios from "axios";
 export default class AllProjects extends Component {
@@ -24,13 +24,17 @@ export default class AllProjects extends Component {
     ));
 
     return (
+
       <div>
         <Container className="mt-5" fluid>
-          <Col md={6}>
+        <Row className="mt-5 justify-content-center">
+          <Col md={12}>
             <Row className="mt-5 justify-content-center">{allproject}</Row>
           </Col>
+          </Row>
         </Container>
       </div>
+      
     );
   }
 }

@@ -25,17 +25,19 @@ export default class Nave extends Component {
     );
     return (
       <div>
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="success" variant="dark">
           <Nav className="mr-auto">
             <Navbar.Brand>Technical Projects Library</Navbar.Brand>
           </Nav>
           <Nav>
-            <Nav.Link as={Link} to="/" user={this.props.user}>
+            <Nav.Link as={Link} to="/allproject" user={this.props.user}>
               Projects
             </Nav.Link>
             {authNavDetails}
           </Nav>
         </Navbar>
+
+        
       </div>
     );
   }
