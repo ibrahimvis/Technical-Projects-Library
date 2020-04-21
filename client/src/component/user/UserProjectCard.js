@@ -10,6 +10,17 @@ import { Redirect } from "react-router-dom";
 export default class ProjectCard extends Component {
   // ALL PROJECT HOME PAGE
   // SENDING THE PROJECT OBJ
+  // DeleteProject = async () => {
+  // axios
+  //   .get(`/api/project/delete/${this.props.project._id}`)
+  //   .then((res) => {
+  //     //   .get(`/api/project/delete/${this.props.project._id}`)
+  //     //   .then((res) => {
+  //     //   })
+  //     //   .catch((err) => console.log(err));
+  //   })
+  //   .catch((err) => console.log(err));
+  // };
   render() {
     // console.log(localStorage.getItem("token") == null);
     let { title, user, _id, image } = this.props.project;
@@ -48,6 +59,7 @@ export default class ProjectCard extends Component {
                     className="ml-5"
                     // as={Link}
                     // to={`/api/project/${_id}`}
+                    // onClick={this.DeleteProject}
                     variant="primary"
                   >
                     Delete
