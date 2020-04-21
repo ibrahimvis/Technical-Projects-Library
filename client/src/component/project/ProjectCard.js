@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 export default class ProjectCard extends Component {
@@ -18,11 +18,20 @@ export default class ProjectCard extends Component {
     // }
     return (
       <div>
-        <div className="mb-5">
-          <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src={image} />
+
+        <Col md={3} className="m-2">
+          {" "}
+          <Card
+            className="bg-secondary text-white text-center"
+            border="dark"
+            style={{ width: "18rem" }}
+          >
+            <Card.Header className="bg-dark"></Card.Header>
+
+            <Card.Img variant="top" src={image} height="200" width="200" />
             <Card.Body>
-              <Card.Title> {title}</Card.Title>
+              <Card.Title className="text-warning">{title}</Card.Title>
+
 
               {user.firstName != null ? (
                 <Card.Text>
@@ -35,8 +44,21 @@ export default class ProjectCard extends Component {
                 More Info
               </Button>
             </Card.Body>
+
+            <Card.Footer className="text-muted bg-dark">
+              {" "}
+              <Button
+                as={Link}
+                to={`/api/project/${_id}`}
+                variant="success"
+                block
+              >
+                More Details
+              </Button>
+            </Card.Footer>
           </Card>
-        </div>
+          <br />
+        </Col>{" "}
       </div>
     );
   }

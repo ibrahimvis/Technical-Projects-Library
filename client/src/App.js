@@ -10,7 +10,6 @@ import Profile from "./component/user/Profile";
 import AllProjects from "./component/project/AllProjects";
 import OneProject from "./component/project/OneProject";
 import EditProject from "./component/project/EditProject";
-
 import axios from "axios";
 import { decode } from "jsonwebtoken";
 import PrivateRoute from "./PrivateRoute";
