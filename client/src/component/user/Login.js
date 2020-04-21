@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button, Col, Row, Container } from "react-bootstrap";
+import { Form, Button, Col, Row, Container, Card } from "react-bootstrap";
 import Axios from "axios";
 
 export const Login = (props) => {
@@ -29,40 +29,53 @@ export const Login = (props) => {
   };
   return (
     <>
-      <Form className="mt-5">
+      <Container className="mt-5 row justify-content-center" fluid>
         <Row className="justify-content-center mt-5">
-          <Col md={8}>
-            <Form.Row>
-              <Form.Group as={Col} controlId="formGridEmail">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Enter email"
-                  name="email"
-                  onChange={(e) => onChangeInput(e)}
-                />
-              </Form.Group>
-
-              <Form.Group as={Col} controlId="formGridPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  onChange={(e) => onChangeInput(e)}
-                />
-              </Form.Group>
-            </Form.Row>
-            <Button
-              variant="primary"
-              type="submit"
-              onClick={(e) => onSubmit(e)}
+          <Col md={12} className="m-2">
+            <Card
+              className="bg-secondary text-white"
+              border="dark"
+              style={{ width: "40rem" }}
             >
-              Submit
-            </Button>
+              <Card.Header className="bg-dark"></Card.Header>
+              <Form>
+                <Card.Body>
+                  <Form.Row>
+                    <Form.Group as={Col} controlId="formGridEmail">
+                      <Form.Label>Email Address:</Form.Label>
+                      <Form.Control
+                        type="email"
+                        placeholder="Enter email"
+                        name="email"
+                        onChange={(e) => onChangeInput(e)}
+                      />
+                    </Form.Group>
+                    <Form.Group as={Col} controlId="formGridPassword">
+                      <Form.Label>Password:</Form.Label>
+                      <Form.Control
+                        type="password"
+                        placeholder="Password"
+                        name="password"
+                        onChange={(e) => onChangeInput(e)}
+                      />
+                    </Form.Group>
+                  </Form.Row>
+                </Card.Body>
+                <Card.Footer className="text-muted bg-dark">
+                  <Button
+                    variant="success"
+                    type="submit"
+                    onClick={(e) => onSubmit(e)}
+                    block
+                  >
+                    Sign In
+                  </Button>
+                </Card.Footer>
+              </Form>
+            </Card>
           </Col>
         </Row>
-      </Form>
+      </Container>{" "}
     </>
   );
 };
