@@ -31,7 +31,7 @@ export default class ProjectCard extends Component {
             <Card.Body>
               <Card.Title className="text-warning">{title}</Card.Title>
 
-              {user.firstName != null ? (
+              {!(user == null) ? (
                 <Card.Text>
                   {user.firstName} {user.lastName}
                 </Card.Text>
