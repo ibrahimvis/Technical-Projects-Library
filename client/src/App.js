@@ -97,6 +97,7 @@ export default class App extends Component {
             user={user}
             component={Profile}
           />
+          {/* <Route path="/profile" render={() => <Profile user={user} />} /> */}
           <Route path="/allproject" component={AllProjects} />
           <Route path="/api/project/:id" component={OneProject} />
           <Route path="/signup" component={Signup} />} />
