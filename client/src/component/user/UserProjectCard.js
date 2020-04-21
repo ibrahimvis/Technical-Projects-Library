@@ -22,7 +22,10 @@ export default class ProjectCard extends Component {
         { headers: { "x-auth-token": token } }
       );
       console.log(projectDeleted);
-      this.props.history.push("/allproject");
+
+      this.props.history.push("/profile");
+
+
     } catch (error) {}
   };
 

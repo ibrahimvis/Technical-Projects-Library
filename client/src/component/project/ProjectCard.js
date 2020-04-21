@@ -8,7 +8,7 @@ export default class ProjectCard extends Component {
   render() {
     // console.log(localStorage.getItem("token") == null);
     let { title, user, _id, image } = this.props.project;
-    console.log(this.props.project);
+    // console.log(this.props.project);
     // if (!localStorage.getItem) {
     //   console.log("empty");
     // } else {
@@ -31,6 +31,7 @@ export default class ProjectCard extends Component {
             <Card.Body>
               <Card.Title className="text-warning">{title}</Card.Title>
 
+
               <hr
                     style={{
                       color: "#303030",
@@ -39,13 +40,17 @@ export default class ProjectCard extends Component {
                     }}
                   />
                   
-              {user.firstName != null ? (
+        
+
+              {!(user == null) ? (
+
                 <Card.Text>
                   {user.firstName} {user.lastName}
                 </Card.Text>
               ) : (
                 <Card.Text>Dony By : user deleted from the db</Card.Text>
               )}
+
             </Card.Body>
 
             <Card.Footer className="text-muted bg-dark">
