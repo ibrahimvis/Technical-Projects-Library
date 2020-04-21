@@ -7,7 +7,7 @@ let Project = require("../models/project.model");
 
 let isLoggedIn = require("../config/config");
 
-router.get("/api/profile/:id", isLoggedIn, async (req, res) => {
+router.get("/api/profile/:id", async (req, res) => {
   try {
     let user = await User.findById(req.params.id).populate("project");
     if (!user) throw { message: "something went south" };

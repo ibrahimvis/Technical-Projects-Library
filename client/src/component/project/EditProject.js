@@ -68,7 +68,7 @@ export default class EditProject extends Component {
                 <Form.Control
                   placeholder="image"
                   name="image"
-                  value={this.state.project.image}
+                  value={this.state.project.gitimagehub}
                   onChange={(e) => this.changeHandler(e)}
                 />
               </Form.Group>

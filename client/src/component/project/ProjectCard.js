@@ -8,14 +8,7 @@ export default class ProjectCard extends Component {
   render() {
     // console.log(localStorage.getItem("token") == null);
     let { title, user, _id, image } = this.props.project;
-    // console.log(this.props.project);
-    // if (!localStorage.getItem) {
-    //   console.log("empty");
-    // } else {
-    //   // not login there is no Token
-    //   // console.log("Not empty");
-    //   // let btn=
-    // }
+
     return (
       <div>
         <Col md={3} className="m-2">

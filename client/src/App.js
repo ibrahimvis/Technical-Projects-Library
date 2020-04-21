@@ -1,6 +1,6 @@
 import React, { Component, Profiler } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import CreateProject from "./component/project/CreateProject";
 import Signup from "./component/user/Signup";
 import ChangePassword from "./component/user/ChangePassword";
@@ -28,6 +28,7 @@ export default class App extends Component {
   logoutHandler = (e) => {
     e.preventDefault();
     localStorage.removeItem("token");
+
     this.setState({
       isAuth: false,
       user: null,
@@ -84,6 +85,7 @@ export default class App extends Component {
       <div>
         <Nave user={user} logout={this.logoutHandler} />
         <Switch>
+          <Route exact path="/" component={AllProjects} />
           <Route
             path="/create"
             render={(props) => (

@@ -11,33 +11,31 @@ export default class Profile extends Component {
   };
 
   componentDidMount() {
-    this.state.user.project.map(
-      (projectID) =>
-        axios
-          .get(`/api/project/${projectID}`) //return obj
-          .then((res) => {
-            this.setState({
-              project: [...this.state.project, res.data.project],
-            });
-          })
-          .catch((err) => console.log(err))
-      // <ProjectCard project={project} key={project._id} />
-    );
+    console.log("sdd");
+    axios
+      .get(`http://localhost:3002/api/profile/${this.state.user._id}`)
+      .then((res) => {
+        this.setState({
+          project: res.data.project,
+        });
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
   }
 
   render() {
-      console.log(this.state.project)
-      let allproject =<div> </div>
+    console.log(this.state.project);
+    let allproject = this.state.project.map((project) => {
+      return <UserProjectCard project={project} key={project._id} />;
+    });
 
-      allproject = this.state.project.filter(x => x)
-         .map((project) => {
-            return  <UserProjectCard project={project} key={project._id} /> ;
-          });
+    // allproject = this.state.project
+    //   .filter((x) => x)
+    //   .map((project) => {
+    //
+    //   });
     // let allproject =<div> </div>
 
-
-
-   
     // console.log(this.state.project);
     return (
       <div>
@@ -49,7 +47,8 @@ export default class Profile extends Component {
                 as={Link}
                 to={`/create`}
                 user={this.state.user}
-                variant="success" block
+                variant="success"
+                block
               >
                 Add project
               </Button>

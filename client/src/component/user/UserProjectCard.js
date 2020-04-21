@@ -9,7 +9,7 @@ import EditProject from "../project/EditProject";
 import { Redirect } from "react-router-dom";
 import Axios from "axios";
 
-export default class ProjectCard extends Component {
+export default class UserProjectCard extends Component {
   // ALL PROJECT HOME PAGE
   // SENDING THE PROJECT OBJ
 
@@ -23,7 +23,6 @@ export default class ProjectCard extends Component {
       );
       console.log(projectDeleted);
       this.props.history.push("/profile");
-      // <Redirect to="/prfile" />;
     } catch (error) {}
   };
 
@@ -65,7 +64,6 @@ export default class ProjectCard extends Component {
                     className="ml-5"
                     // as={Link}
                     // to={`/api/project/${_id}`}
-                    // onClick={this.DeleteProject}
                     variant="primary"
                     onClick={this.deleteHandler}
                   >
