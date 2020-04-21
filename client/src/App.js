@@ -10,6 +10,7 @@ import Profile from "./component/user/Profile";
 import AllProjects from "./component/project/AllProjects";
 import OneProject from "./component/project/OneProject";
 import EditProject from "./component/project/EditProject";
+import AdminDashboard from "./component/admin/AdminDashboard";
 import axios from "axios";
 import { decode } from "jsonwebtoken";
 import PrivateRoute from "./PrivateRoute";
@@ -96,6 +97,7 @@ export default class App extends Component {
             isAuth={isAuth}
             component={AllProjects}
           /> */}
+          <Route path="/admin" component={AdminDashboard} />
           {this.state.waiting && (
             <PrivateRoute
               exact
@@ -125,6 +127,7 @@ export default class App extends Component {
               <ChangePassword {...props} user={this.state.user} />
             )}
           />
+          )} />
         </Switch>
       </div>
     );

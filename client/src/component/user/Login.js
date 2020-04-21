@@ -16,7 +16,7 @@ export const Login = (props) => {
     e.preventDefault();
     Axios.post("/api/auth/login", login)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.data.token) {
           localStorage.setItem("token", res.data.token);
           props.history.push("/allproject");

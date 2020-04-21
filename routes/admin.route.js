@@ -10,9 +10,9 @@ router.get("/", isLoggedIn, async (req, res) => {
     res.status(403).json("Not Cool");
   } else {
     try {
-      let users    = await User.find({});
-      let projects = await Project.find({});
-      res.status(200).json({users, projects});
+      let users = await User.find({});
+      let projects = await Project.find({}).populate("user");
+      res.status(200).json({ users, projects });
     } catch (error) {
       res.json(error);
     }
@@ -20,32 +20,70 @@ router.get("/", isLoggedIn, async (req, res) => {
 });
 
 router.get("/delete/user/:id", isLoggedIn, async (req, res) => {
-    if (!req.user.isSuperAdmin) {
-      res.status(403).json("Not Cool");
-    } else {
-      try {
-        let user = await User.findByIdAndDelete(req.params.id);
-        if (!user) throw {message: "Couldn't find the user"}
-        await user.project.map(p => {
-            let x = Project.findByIdAndDelete(p);
-            console.log(x)
-        })
-        res.status(200).json({user, message: "Deleted!"});
-      } catch (error) {
-        res.json(error);
-      }
+  if (!req.user.isSuperAdmin) {
+    res.status(403).json("Not Cool");
+  } else {
+    try {
+      let user = await User.findByIdAndDelete(req.params.id);
+      if (!user) throw { message: "Couldn't find the user" };
+      await user.project.map((p) => {
+        let x = Project.findByIdAndDelete(p);
+        console.log(x);
+      });
+      res.status(200).json({ user, message: "Deleted!" });
+    } catch (error) {
+      res.json(error);
     }
+  }
 });
 
 router.get("/delete/project/:id", async (req, res) => {
+  if (!req.user.isSuperAdmin) {
+    res.status(403).json("Not Cool");
+  } else {
     try {
       let project = await Project.findByIdAndDelete(req.params.id);
-      if (!project) throw {message: "Couldn't find the project"}
-      res.json({ project }).status(200);
+      if (!project) throw { message: "Couldn't find the project" };
+      res.status(200).json({ project });
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: "something went south check the logs" });
     }
+  }
+});
+
+router.post("/edit/user/", isLoggedIn, async (req, res) => {
+  if (!req.user.isSuperAdmin) {
+    res.status(403).json("Not Cool");
+  } else {
+    try {
+      let { _id, isAdmin, isSuperAdmin } = req.body;
+      let user = await User.findByIdAndUpdate(_id, {
+        $set: { isAdmin, isSuperAdmin },
+      });
+      res.status(200).json(user);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: "something went south check the logs" });
+    }
+  }
+});
+
+router.post("/edit/project/", isLoggedIn, async (req, res) => {
+  if (!req.user.isSuperAdmin) {
+    res.status(403).json("Not Cool");
+  } else {
+    try {
+      let { _id, image, title, contributor, description, github } = req.body;
+      let project = await Project.findByIdAndUpdate(_id, {
+        $set: { image, title, contributor, description, github },
+      });
+      res.status(200).json(project);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: "something went south check the logs" });
+    }
+  }
 });
 
 module.exports = router;
