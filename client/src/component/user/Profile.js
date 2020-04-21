@@ -26,9 +26,18 @@ export default class Profile extends Component {
   }
 
   render() {
-    let allproject = this.state.project.map((project) => (
-      <UserProjectCard project={project} key={project._id} />
-    ));
+      console.log(this.state.project)
+      let allproject =<div> </div>
+
+      allproject = this.state.project.filter(x => x)
+         .map((project) => {
+            return  <UserProjectCard project={project} key={project._id} /> ;
+          });
+    // let allproject =<div> </div>
+
+
+
+   
     // console.log(this.state.project);
     return (
       <div>
@@ -43,6 +52,15 @@ export default class Profile extends Component {
                 variant="primary"
               >
                 Add project
+              </Button>
+              <Button
+                className="ml-5"
+                as={Link}
+                to={`/ChangePassword`}
+                user={this.state.user}
+                variant="info"
+              >
+                Change Password
               </Button>
               {allproject}
               {/* {console.log(this.state.project)} */}
