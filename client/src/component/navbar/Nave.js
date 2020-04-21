@@ -6,6 +6,13 @@ export default class Nave extends Component {
   render() {
     const authNavDetails = this.props.user ? (
       <>
+        {this.props.user.isSuperAdmin ? (
+          <Nav.Link as={Link} to="/admin" user={this.props.user}>
+            Admin Dashboard
+          </Nav.Link>
+        ) : (
+          <></>
+        )}
         <Nav.Link as={Link} to="/profile" user={this.props.user}>
           Profile
         </Nav.Link>

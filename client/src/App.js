@@ -10,7 +10,7 @@ import Profile from "./component/user/Profile";
 import AllProjects from "./component/project/AllProjects";
 import OneProject from "./component/project/OneProject";
 import EditProject from "./component/project/EditProject";
-
+import AdminDashboard from './component/admin/AdminDashboard';
 import axios from "axios";
 import { decode } from "jsonwebtoken";
 import PrivateRoute from "./PrivateRoute";
@@ -70,8 +70,8 @@ export default class App extends Component {
 
   render() {
     const { isAuth, message, user } = this.state;
-    // console.log("app    " + user);
-    console.log(this.state.isAuth);
+    // // console.log("app    " + user);
+    // console.log(this.state.isAuth);
 
     return (
       <div>
@@ -108,6 +108,11 @@ export default class App extends Component {
             path="/changepassword"
             render={(props) => (
               <ChangePassword {...props} user={this.state.user} />
+            )}
+          />
+          <Route
+            path="/admin"
+            component={AdminDashboard}/>
             )}
           />
         </Switch>

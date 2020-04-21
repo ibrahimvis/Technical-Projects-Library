@@ -8,7 +8,7 @@ export default class ProjectCard extends Component {
   render() {
     // console.log(localStorage.getItem("token") == null);
     let { title, user, _id, image } = this.props.project;
-    console.log(this.props.project);
+    // console.log(this.props.project);
     // if (!localStorage.getItem) {
     //   console.log("empty");
     // } else {
