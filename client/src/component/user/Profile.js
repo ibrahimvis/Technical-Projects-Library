@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Button, Col, Row } from "react-bootstrap";
+import { Form, Button, Col, Row, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import UserProjectCard from "./UserProjectCard";
 import axios from "axios";
@@ -39,10 +39,21 @@ export default class Profile extends Component {
     // console.log(this.state.project);
     return (
       <div>
-        <div>This is profile</div>
-        <Form className="mt-5">
+        <Container className="mt-5" fluid>
+          {/* <Form className="mt-5"> */}
           <Row className="justify-content-center mt-5">
-            <Col md={8}>
+            <Col md={3}>
+              <Button
+                // className="ml-5"
+                as={Link}
+                to={`/ChangePassword`}
+                user={this.state.user}
+                variant="success"
+                block
+              >
+                Change Password
+              </Button>
+
               <Button
                 as={Link}
                 to={`/create`}
@@ -50,22 +61,17 @@ export default class Profile extends Component {
                 variant="success"
                 block
               >
-                Add project
+                Add New project
               </Button>
-              <Button
-                className="ml-5"
-                as={Link}
-                to={`/ChangePassword`}
-                user={this.state.user}
-                variant="info"
-              >
-                Change Password
-              </Button>
-              {allproject}
+            </Col>
+          </Row>
+          <Row className="mt-5 justify-content-center">
+            <Col md={12}>
+              <Row className="justify-content-center"> {allproject}</Row>
               {/* {console.log(this.state.project)} */}
             </Col>
           </Row>
-        </Form>
+        </Container>
       </div>
     );
   }

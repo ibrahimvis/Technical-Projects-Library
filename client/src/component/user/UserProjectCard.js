@@ -3,7 +3,7 @@
 
 //------------------------------------------------
 import React, { Component } from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Col, ButtonToolbar, ButtonGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import EditProject from "../project/EditProject";
 import { Redirect } from "react-router-dom";
@@ -22,6 +22,7 @@ export default class UserProjectCard extends Component {
         { headers: { "x-auth-token": token } }
       );
       console.log(projectDeleted);
+
       this.props.history.push("/profile");
     } catch (error) {}
   };
@@ -39,49 +40,67 @@ export default class UserProjectCard extends Component {
     // }
     return (
       <div>
-        <div className="mb-5">
-          <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src={image} />
+        <Col md={3} className="mb-5">
+          {" "}
+          <Card
+            className="bg-secondary text-white text-center"
+            border="dark"
+            style={{ width: "18rem" }}
+          >
+            <Card.Header className="bg-dark"></Card.Header>
+
+            <Card.Img variant="top" src={image} height="200" width="200" />
             <Card.Body>
-              <Card.Title>Project Title {title}</Card.Title>
-
-              {localStorage.getItem("token") == null ? (
-                <Button as={Link} to={`/api/project/${_id}`} variant="primary">
-                  More Info
-                </Button>
-              ) : (
-                <>
+              <Card.Title className="text-warning">{title}</Card.Title>
+            </Card.Body>
+            {localStorage.getItem("token") == null ? (
+              <Button as={Link} to={`/api/project/${_id}`} variant="primary">
+                More Info
+              </Button>
+            ) : (
+              <>
+                <Card.Footer className="text-muted bg-dark">
                   <Button
-                    as={Link}
-                    to={`/api/project/EditeProject/${_id}`}
-                    variant="primary"
-                    // project={this.state.project}
-                  >
-                    Edit
-                  </Button>
-
-                  <Button
-                    className="ml-5"
-                    // as={Link}
-                    // to={`/api/project/${_id}`}
-                    variant="primary"
-                    onClick={this.deleteHandler}
-                  >
-                    Delete
-                  </Button>
-                  <Button
-                    className="ml-5"
                     as={Link}
                     to={`/api/project/${_id}`}
-                    variant="primary"
+                    variant="success"
+                    block
                   >
-                    more info
+                    More Details
                   </Button>
-                </>
-              )}
-            </Card.Body>
+                </Card.Footer>
+                <Card.Footer className="text-muted bg-dark">
+                  <div className="container">
+                    <div className="row">
+                      <div className="col-sm">
+                        <Button
+                          as={Link}
+                          to={`/api/project/EditeProject/${_id}`}
+                          variant="primary"
+                          block
+                          // project={this.state.project}
+                        >
+                          Edit
+                        </Button>
+                      </div>
+                      <div className="col-sm">
+                        <Button
+                          // as={Link}
+                          // to={`/api/project/${_id}`}
+                          variant="danger"
+                          onClick={this.deleteHandler}
+                          block
+                        >
+                          Delete
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </Card.Footer>
+              </>
+            )}
           </Card>
-        </div>
+        </Col>
       </div>
     );
   }

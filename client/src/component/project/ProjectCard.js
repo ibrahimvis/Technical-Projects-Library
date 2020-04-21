@@ -24,6 +24,14 @@ export default class ProjectCard extends Component {
             <Card.Body>
               <Card.Title className="text-warning">{title}</Card.Title>
 
+              <hr
+                style={{
+                  color: "#303030",
+                  backgroundColor: "#303030",
+                  borderColor: "#303030",
+                }}
+              />
+
               {!(user == null) ? (
                 <Card.Text>
                   {user.firstName} {user.lastName}

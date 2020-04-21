@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Container, Button } from "react-bootstrap";
+import { Form, Container, Button, Col, Row, Card } from "react-bootstrap";
 import axios from "axios";
 
 export default class EditProject extends Component {
@@ -52,62 +52,84 @@ export default class EditProject extends Component {
       <div>
         {this.state.project && (
           <>
-            <div>This is Update page</div>
-            <Container>
-              <Form.Group>
-                <Form.Label>Image</Form.Label>
-                {/* <Form.File
+            <Container
+              className="mt-5 mb-5 row justify-content-md-center"
+              fluid
+            >
+              <Row className="mt-5 justify-content-center">
+                <Col>
+                  <Card
+                    className="bg-secondary text-white"
+                    border="dark"
+                    style={{ width: "40rem" }}
+                  >
+                    <Card.Header className="bg-dark"></Card.Header>
+
+                    <Card.Body>
+                      <Form.Group>
+                        <Form.Label>Image:</Form.Label>
+                        {/* <Form.File
                 name="image"
                 id="formcheck-api-regular"
                 label="Uploade image "
                 lang="en"
                 custom
               /> */}
-                <Form.Control
-                  placeholder="image"
-                  name="image"
-                  value={this.state.project.gitimagehub}
-                  onChange={(e) => this.changeHandler(e)}
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Title</Form.Label>
-                <Form.Control
-                  name="title"
-                  value={this.state.project.title}
-                  onChange={(e) => this.changeHandler(e)}
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Contributor</Form.Label>
-                <Form.Control
-                  name="contributor"
-                  value={this.state.project.contributor}
-                  onChange={(e) => this.changeHandler(e)}
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Description</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows="3"
-                  name="description"
-                  value={this.state.project.description}
-                  onChange={(e) => this.changeHandler(e)}
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Github Link</Form.Label>
+                        <Form.Control
+                          placeholder="image"
+                          name="image"
+                          value={this.state.project.gitimagehub}
+                          onChange={(e) => this.changeHandler(e)}
+                        />
+                      </Form.Group>
+                      <Form.Group>
+                        <Form.Label>Title</Form.Label>
+                        <Form.Control
+                          name="title"
+                          value={this.state.project.title}
+                          onChange={(e) => this.changeHandler(e)}
+                        />
+                      </Form.Group>
+                      <Form.Group>
+                        <Form.Label>Contributor</Form.Label>
+                        <Form.Control
+                          name="contributor"
+                          value={this.state.project.contributor}
+                          onChange={(e) => this.changeHandler(e)}
+                        />
+                      </Form.Group>
+                      <Form.Group>
+                        <Form.Label>Description</Form.Label>
+                        <Form.Control
+                          as="textarea"
+                          rows="3"
+                          name="description"
+                          value={this.state.project.description}
+                          onChange={(e) => this.changeHandler(e)}
+                        />
+                      </Form.Group>
+                      <Form.Group>
+                        <Form.Label>Github Link</Form.Label>
 
-                <Form.Control
-                  name="github"
-                  onChange={(e) => this.changeHandler(e)}
-                  value={this.state.project.github}
-                />
-              </Form.Group>
-              <Button variant="primary" onClick={this.createHandler} block>
-                Edit Project
-              </Button>
+                        <Form.Control
+                          name="github"
+                          onChange={(e) => this.changeHandler(e)}
+                          value={this.state.project.github}
+                        />
+                      </Form.Group>
+                    </Card.Body>
+                    <Card.Footer className="text-muted bg-dark">
+                      <Button
+                        variant="success"
+                        onClick={this.createHandler}
+                        block
+                      >
+                        Edit Project
+                      </Button>
+                    </Card.Footer>
+                  </Card>
+                </Col>
+              </Row>
             </Container>
           </>
         )}

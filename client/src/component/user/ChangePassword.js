@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Form, Col, Button } from "react-bootstrap";
+import { Row, Form, Col, Button, Container, Card } from "react-bootstrap";
 import Axios from "axios";
 
 export default class ChangePassword extends Component {
@@ -29,42 +29,56 @@ export default class ChangePassword extends Component {
   render() {
     return (
       <>
-        <Form>
-          <Row className="justify-content-center">
-            <Col>
-              <Form.Row>
-                <Col md={6}>
-                  <Form.Label>Old Password</Form.Label>
-                  <Form.Control
-                    type="password"
-                    placeholder="Password"
-                    name="oldpassword"
-                    onChange={this.changeHandler}
-                  />
-                </Col>
-              </Form.Row>
-              <Form.Row>
-                <Col md={6}>
-                  <Form.Label>New Password</Form.Label>
-                  <Form.Control
-                    type="password"
-                    placeholder="Password"
-                    name="newpassword"
-                    onChange={this.changeHandler}
-                  />
-                </Col>
-              </Form.Row>
-              <Button
-                className="mt-2"
-                variant="primary"
-                type="submit"
-                onClick={(e) => this.changePasswordHandler(e)}
+        <Container className="mt-5 row justify-content-center" fluid>
+          <Row className="justify-content-center mt-5">
+            <Col md={12} className="m-2">
+              <Card
+                className="bg-secondary text-white"
+                border="dark"
+                style={{ width: "40rem" }}
               >
-                Submit
-              </Button>
+                <Card.Header className="bg-dark"></Card.Header>
+
+                <Form>
+                  <Card.Body>
+                    <Form.Row>
+                      <Form.Group as={Col} controlId="formGridEmail">
+                        <Form.Label>Old Password:</Form.Label>
+                        <Form.Control
+                          type="password"
+                          placeholder="Old Password"
+                          name="oldpassword"
+                          onChange={this.changeHandler}
+                        />
+                      </Form.Group>
+
+                      <Form.Group as={Col} controlId="formGridPassword">
+                        <Form.Label>New Password:</Form.Label>
+                        <Form.Control
+                          type="password"
+                          placeholder="New Password"
+                          name="newpassword"
+                          onChange={this.changeHandler}
+                        />
+                      </Form.Group>
+                    </Form.Row>
+                  </Card.Body>
+                  <Card.Footer className="text-muted bg-dark">
+                    <Button
+                      className="mt-2"
+                      variant="success"
+                      type="submit"
+                      onClick={(e) => this.changePasswordHandler(e)}
+                      block
+                    >
+                      Change Password
+                    </Button>
+                  </Card.Footer>
+                </Form>
+              </Card>
             </Col>
           </Row>
-        </Form>
+        </Container>
       </>
     );
   }
