@@ -40,16 +40,21 @@ export const Login = (props) => {
               <Card.Header className="bg-dark"></Card.Header>
               <Form>
                 <Card.Body>
+
+
+
                   <Form.Row>
                     <Form.Group as={Col} controlId="formGridEmail">
                       <Form.Label>Email Address:</Form.Label>
                       <Form.Control
                         type="email"
-                        placeholder="Enter email"
+                        placeholder="Email address"
                         name="email"
                         onChange={(e) => onChangeInput(e)}
                       />
                     </Form.Group>
+
+
                     <Form.Group as={Col} controlId="formGridPassword">
                       <Form.Label>Password:</Form.Label>
                       <Form.Control
@@ -60,6 +65,11 @@ export const Login = (props) => {
                       />
                     </Form.Group>
                   </Form.Row>
+
+
+
+
+
                 </Card.Body>
                 <Card.Footer className="text-muted bg-dark">
                   <Button

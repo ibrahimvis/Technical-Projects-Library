@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { Card, Button, Col, Row, Container } from "react-bootstrap";
+import {
+  Card,
+  Button,
+  Col,
+  Row,
+  Container,
+  ListGroup,
+  ListGroupItem,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import axios from "axios";
@@ -35,11 +43,11 @@ export default class OneProject extends Component {
     const dateString = this.state.project.createdAt;
     return (
       <div>
-        <Container className="mt-5 row justify-content-md-center" fluid>
+        <Container className="mt-5 mb-5 row justify-content-md-center" fluid>
           <Row className="mt-5 justify-content-center">
             <Col>
               <Card
-                className="bg-secondary text-white text-center"
+                className="bg-secondary"
                 border="dark"
                 style={{ width: "40rem" }}
               >
@@ -47,15 +55,55 @@ export default class OneProject extends Component {
 
                 <Card.Img variant="top" src={image} height="400" width="200" />
                 <Card.Body>
-                  <Card.Title className="text-warning">{title}</Card.Title>
-                  <Card.Text>Contributor: {contributor} </Card.Text>
-                  <Card.Text>Description: {description}</Card.Text>
-                  <Card.Text>
-                    Date Created:{" "}
-                    {<Moment format="YYYY/MM/DD" date={dateString} />}
-                  </Card.Text>
-                  <Card.Text>GitHub: {github}</Card.Text>
-                  {/* <Card.Text>Dony By :{user.firstName}</Card.Text> */}
+                  <Card.Title className="text-warning text-center">
+                    {title}
+                  </Card.Title>
+
+                  <Card.Text className="text-white">Contributor: </Card.Text>
+                  <Row>
+                    <Col className="text-black">{contributor}</Col>
+                  </Row>
+
+                  <hr
+                    style={{
+                      color: "#303030",
+                      backgroundColor: "#303030",
+                      borderColor: "#303030",
+                    }}
+                  />
+
+                  <Card.Text className="text-white">Description: </Card.Text>
+                  <Row>
+                    <Col>{description}</Col>
+                  </Row>
+
+                  <hr
+                    style={{
+                      color: "#303030",
+                      backgroundColor: "#303030",
+                      borderColor: "#303030",
+                    }}
+                  />
+
+                  <Card.Text className="text-white">Date Created: </Card.Text>
+                  <Row>
+                    <Col>
+                      {" "}
+                      {<Moment format="YYYY/MM/DD" date={dateString} />}
+                    </Col>
+                  </Row>
+
+                  <hr
+                    style={{
+                      color: "#303030",
+                      backgroundColor: "#303030",
+                      borderColor: "#303030",
+                    }}
+                  />
+                  <Card.Text className="text-white">GitHub:</Card.Text>
+                  <Row>
+                    <Col>{github}</Col>
+                  </Row>
                 </Card.Body>
 
                 <Card.Footer className="text-muted bg-dark">
