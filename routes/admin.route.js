@@ -24,12 +24,17 @@ router.get("/delete/user/:id", isLoggedIn, async (req, res) => {
     res.status(403).json("Not Cool");
   } else {
     try {
-      let user = await User.findByIdAndDelete(req.params.id);
-      if (!user) throw { message: "Couldn't find the user" };
-      await user.project.map((p) => {
-        let x = Project.findByIdAndDelete(p);
-        console.log(x);
-      });
+      let user = await User.findById(req.params.id).populate('project');
+      if (!user) throw {message: "couldn't find usere"};
+
+      user.project.forEach(e => {
+        Project.findByIdAndDelete(e._id).then(p => {
+          console.log(p);
+        }).catch(e => console.log(e))
+      })
+
+      user = await User.findByIdAndDelete(req.params.id);
+
       res.status(200).json({ user, message: "Deleted!" });
     } catch (error) {
       res.json(error);
