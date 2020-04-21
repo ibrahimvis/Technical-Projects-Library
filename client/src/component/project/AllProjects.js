@@ -17,18 +17,36 @@ export default class AllProjects extends Component {
       .catch((err) => console.log(err));
   }
 
+
+
+
+searchHandler= (e)=>{
+axios
+.get(`/api/search/${e.target.value}`)
+.then((res) => {
+    this.setState({
+      allproject: res.data,
+    });
+  })
+  .catch((err) => console.log(err));
+}
+
   render() {
-    // console.log(this.state.allproject);
+    console.log(this.state.allproject);
     let allproject = this.state.allproject.map((project) => (
       <ProjectCard project={project} key={project._id} />
     ));
 
     return (
       <div>
+          
         <Container className="mt-5" fluid>
+        <input type="text" placeholder="search" onChange={this.searchHandler} />
+
           <Col md={6}>
             <Row className="mt-5 justify-content-center">{allproject}</Row>
           </Col>
+          
         </Container>
       </div>
     );
