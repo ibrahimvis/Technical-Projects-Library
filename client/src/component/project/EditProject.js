@@ -5,14 +5,24 @@ import axios from "axios";
 export default class EditProject extends Component {
   // console.log(this.props.match.params.id);
   state = {
-    _id: this.props.match.params.id, //user obj
+    _id: this.props.match.params.id, //project obj
     project: null,
   };
+  componentDidMount() {
+    axios
+      .get(`/api/project/${this.state._id}`)
+      .then((res) => {
+        this.setState({
+          project: res.data.project,
+        });
+      })
+      .catch((err) => console.log(err));
+  }
 
   createHandler = (e) => {
     e.preventDefault();
     axios
-      .post("/api/project/update", this.state, {
+      .post("/api/project/update", this.state.project, {
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
@@ -27,18 +37,6 @@ export default class EditProject extends Component {
         console.log(err);
       });
   };
-
-  componentDidMount() {
-    axios
-      .get(`/api/project/${this.state._id}`)
-      .then((res) => {
-        this.setState({
-          project: res.data.project,
-        });
-        // console.log(resdata.project);
-      })
-      .catch((err) => console.log(err));
-  }
 
   changeHandler = (e) => {
     let temp = { ...this.state };
