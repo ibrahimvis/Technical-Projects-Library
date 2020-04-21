@@ -9,7 +9,7 @@ import EditProject from "../project/EditProject";
 import { Redirect } from "react-router-dom";
 import Axios from "axios";
 
-export default class ProjectCard extends Component {
+export default class UserProjectCard extends Component {
   // ALL PROJECT HOME PAGE
   // SENDING THE PROJECT OBJ
 
@@ -24,8 +24,6 @@ export default class ProjectCard extends Component {
       console.log(projectDeleted);
 
       this.props.history.push("/profile");
-
-
     } catch (error) {}
   };
 

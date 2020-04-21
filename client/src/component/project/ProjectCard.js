@@ -8,14 +8,7 @@ export default class ProjectCard extends Component {
   render() {
     // console.log(localStorage.getItem("token") == null);
     let { title, user, _id, image } = this.props.project;
-    // console.log(this.props.project);
-    // if (!localStorage.getItem) {
-    //   console.log("empty");
-    // } else {
-    //   // not login there is no Token
-    //   // console.log("Not empty");
-    //   // let btn=
-    // }
+
     return (
       <div>
         <Col md={3} className="m-2">
@@ -31,26 +24,21 @@ export default class ProjectCard extends Component {
             <Card.Body>
               <Card.Title className="text-warning">{title}</Card.Title>
 
-
               <hr
-                    style={{
-                      color: "#303030",
-                      backgroundColor: "#303030",
-                      borderColor: "#303030",
-                    }}
-                  />
-                  
-        
+                style={{
+                  color: "#303030",
+                  backgroundColor: "#303030",
+                  borderColor: "#303030",
+                }}
+              />
 
               {!(user == null) ? (
-
                 <Card.Text>
                   {user.firstName} {user.lastName}
                 </Card.Text>
               ) : (
                 <Card.Text>Dony By : user deleted from the db</Card.Text>
               )}
-
             </Card.Body>
 
             <Card.Footer className="text-muted bg-dark">

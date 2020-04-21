@@ -11,29 +11,29 @@ export default class Profile extends Component {
   };
 
   componentDidMount() {
-    this.state.user.project.map(
-      (projectID) =>
-        axios
-          .get(`/api/project/${projectID}`) //return obj
-          .then((res) => {
-            this.setState({
-              project: [...this.state.project, res.data.project],
-            });
-          })
-          .catch((err) => console.log(err))
-      // <ProjectCard project={project} key={project._id} />
-    );
+    console.log("sdd");
+    axios
+      .get(`http://localhost:3002/api/profile/${this.state.user._id}`)
+      .then((res) => {
+        this.setState({
+          project: res.data.project,
+        });
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
   }
 
   render() {
     console.log(this.state.project);
-    let allproject = <div> </div>;
+    let allproject = this.state.project.map((project) => {
+      return <UserProjectCard project={project} key={project._id} />;
+    });
 
-    allproject = this.state.project
-      .filter((x) => x)
-      .map((project) => {
-        return <UserProjectCard project={project} key={project._id} />;
-      });
+    // allproject = this.state.project
+    //   .filter((x) => x)
+    //   .map((project) => {
+    //
+    //   });
     // let allproject =<div> </div>
 
     // console.log(this.state.project);
@@ -43,7 +43,7 @@ export default class Profile extends Component {
           {/* <Form className="mt-5"> */}
           <Row className="justify-content-center mt-5">
             <Col md={3}>
-            <Button
+              <Button
                 // className="ml-5"
                 as={Link}
                 to={`/ChangePassword`}
@@ -64,10 +64,6 @@ export default class Profile extends Component {
                 Add New project
               </Button>
             </Col>
-
-
-
-
           </Row>
           <Row className="mt-5 justify-content-center">
             <Col md={12}>

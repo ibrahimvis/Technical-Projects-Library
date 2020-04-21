@@ -13,54 +13,46 @@ export default class AllProjects extends Component {
         this.setState({
           allproject: res.data.projects,
         });
+        console.log(res.data.projects);
       })
       .catch((err) => console.log(err));
   }
 
-
-
-
-searchHandler= (e)=>{
-axios
-.get(`/api/search/${e.target.value}`)
-.then((res) => {
-    this.setState({
-      allproject: res.data,
-    });
-  })
-  .catch((err) => console.log(err));
-}
+  searchHandler = (e) => {
+    axios
+      .get(`/api/search/${e.target.value}`)
+      .then((res) => {
+        this.setState({
+          allproject: res.data,
+        });
+      })
+      .catch((err) => console.log(err));
+  };
 
   render() {
-    console.log(this.state.allproject);
+    // console.log(this.state.allproject);
     let allproject = this.state.allproject.map((project) => (
       <ProjectCard project={project} key={project._id} />
     ));
 
     return (
-
       <div>
-          
         <Container className="mt-5" fluid>
+          {/* <Image src="holder.js/100px250" fluid /> */}
 
-        {/* <Image src="holder.js/100px250" fluid /> */}
-     
+          <input
+            type="text"
+            placeholder="search"
+            onChange={this.searchHandler}
+          />
 
-
-        <input type="text" placeholder="search" onChange={this.searchHandler} />
-
-          
-
-        <Row className="mt-5 mb-5 justify-content-center">
-
-          <Col md={12}>
-            <Row className="mt-5 justify-content-center">{allproject}</Row>
-          </Col>
+          <Row className="mt-5 mb-5 justify-content-center">
+            <Col md={12}>
+              <Row className="mt-5 justify-content-center">{allproject}</Row>
+            </Col>
           </Row>
-
         </Container>
       </div>
-      
     );
   }
 }
