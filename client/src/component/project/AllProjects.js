@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Image } from "react-bootstrap";
 import ProjectCard from "./ProjectCard";
 import axios from "axios";
 export default class AllProjects extends Component {
@@ -27,7 +27,8 @@ export default class AllProjects extends Component {
 
       <div>
         <Container className="mt-5" fluid>
-        <Row className="mt-5 justify-content-center">
+        {/* <Image src="holder.js/100px250" fluid /> */}
+        <Row className="mt-5 mb-5 justify-content-center">
           <Col md={12}>
             <Row className="mt-5 justify-content-center">{allproject}</Row>
           </Col>

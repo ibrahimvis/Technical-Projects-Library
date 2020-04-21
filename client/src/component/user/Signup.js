@@ -41,7 +41,7 @@ export default class Signup extends Component {
                   <Card.Body>
                     <Form.Row>
                       <Col md={6}>
-                        <Form.Label>First name:</Form.Label>
+                        <Form.Label>First Name:</Form.Label>
                         <Form.Control
                           placeholder="First name"
                           name="firstName"
@@ -50,7 +50,7 @@ export default class Signup extends Component {
                       </Col>
 
                       <Col md={6}>
-                        <Form.Label>Last name:</Form.Label>
+                        <Form.Label>Last Name:</Form.Label>
                         <Form.Control
                           placeholder="Last name"
                           name="lastName"
@@ -64,7 +64,7 @@ export default class Signup extends Component {
                         <Form.Label>Email Address:</Form.Label>
                         <Form.Control
                           type="email"
-                          placeholder="Enter email"
+                          placeholder="Email address"
                           name="email"
                           onChange={this.changeHandler}
                         />
