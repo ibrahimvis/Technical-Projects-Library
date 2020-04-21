@@ -22,7 +22,7 @@ export default class ProjectCard extends Component {
       let projectDeleted = await Axios.delete(`http://localhost:3002/api/project/delete/${this.props.project._id}`,{ headers: { "x-auth-token": token } }
       )
       console.log(projectDeleted);
-      this.props.history.push("/allproject");
+      this.props.history.push("/profile");
 
     } catch (error) {}
   };
