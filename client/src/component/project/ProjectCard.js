@@ -18,6 +18,7 @@ export default class ProjectCard extends Component {
     // }
     return (
       <div>
+
         <Col md={3} className="m-2">
           {" "}
           <Card
@@ -31,13 +32,17 @@ export default class ProjectCard extends Component {
             <Card.Body>
               <Card.Title className="text-warning">{title}</Card.Title>
 
+
               {user.firstName != null ? (
                 <Card.Text>
-                  Dony By : {user.firstName} {user.lastName}
+                  {user.firstName} {user.lastName}
                 </Card.Text>
               ) : (
                 <Card.Text>Dony By : user deleted from the db</Card.Text>
               )}
+              <Button as={Link} to={`/api/project/${_id}`} variant="primary">
+                More Info
+              </Button>
             </Card.Body>
 
             <Card.Footer className="text-muted bg-dark">

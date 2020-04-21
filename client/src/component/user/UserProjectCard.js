@@ -7,9 +7,26 @@ import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import EditProject from "../project/EditProject";
 import { Redirect } from "react-router-dom";
+import Axios from "axios";
+
 export default class ProjectCard extends Component {
   // ALL PROJECT HOME PAGE
   // SENDING THE PROJECT OBJ
+
+  deleteHandler = async () => {
+    try {
+ 
+     let token = localStorage.getItem("token");
+
+
+      let projectDeleted = await Axios.delete(`http://localhost:3002/api/project/delete/${this.props.project._id}`,{ headers: { "x-auth-token": token } }
+      )
+      console.log(projectDeleted);
+      this.props.history.push("/allproject");
+
+    } catch (error) {}
+  };
+
   render() {
     // console.log(localStorage.getItem("token") == null);
     let { title, user, _id, image } = this.props.project;
@@ -28,9 +45,6 @@ export default class ProjectCard extends Component {
             <Card.Img variant="top" src={image} />
             <Card.Body>
               <Card.Title>Project Title {title}</Card.Title>
-              <Card.Text>
-                Dony By : {user.firstName} {user.lastName}
-              </Card.Text>
 
               {localStorage.getItem("token") == null ? (
                 <Button as={Link} to={`/api/project/${_id}`} variant="primary">
@@ -52,8 +66,17 @@ export default class ProjectCard extends Component {
                     // as={Link}
                     // to={`/api/project/${_id}`}
                     variant="primary"
+                    onClick={this.deleteHandler}
                   >
                     Delete
+                  </Button>
+                  <Button
+                    className="ml-5"
+                    as={Link}
+                    to={`/api/project/${_id}`}
+                    variant="primary"
+                  >
+                    more info
                   </Button>
                 </>
               )}
