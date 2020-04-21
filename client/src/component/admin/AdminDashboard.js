@@ -12,6 +12,8 @@ export default class AdminDashboard extends Component {
     projects: [],
     editClicked: false,
     currentUser: null,
+    showProjects: false,
+    showUsers: false,
   };
 
   showEditPopup(user) {
@@ -56,9 +58,22 @@ export default class AdminDashboard extends Component {
     }
   };
 
+  showUsers = () => {
+    this.setState({ showProjects: false, showUsers: true });
+  };
+  showProjects = () => {
+    this.setState({ showProjects: true, showUsers: false });
+  };
+
   render() {
     return (
       <div>
+        <Button type="button" onClick={this.showUsers}>
+          Users
+        </Button>
+        <Button type="button" onClick={this.showProjects}>
+          Projects
+        </Button>
         {this.state.editClicked ? (
           <EditUser
             user={this.state.currentUser}
@@ -68,16 +83,28 @@ export default class AdminDashboard extends Component {
         ) : (
           <></>
         )}
-        <Table striped bordered hover>
-          {this.state.users ? (
-            <Allusers
-              users={this.state.users}
-              onEditClick={this.showEditPopup.bind(this)}
-            />
-          ) : (
-            <></>
-          )}
-        </Table>
+        {this.state.showUsers ? (
+          <Table striped bordered hover>
+            {this.state.users ? (
+              <Allusers
+                users={this.state.users}
+                onEditClick={this.showEditPopup.bind(this)}
+              />
+            ) : (
+              <></>
+            )}
+          </Table>
+        ) : null}
+
+        {this.state.showProjects ? (
+          <Table striped bordered hover>
+            
+              />
+            ) : (
+              <></>
+            )}
+          </Table>
+        ) : null}
       </div>
     );
   }

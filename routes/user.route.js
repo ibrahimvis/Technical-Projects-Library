@@ -20,7 +20,7 @@ router.get("/api/profile/:id", isLoggedIn, async (req, res) => {
 
 router.get("/api/search/:search", async (req, res) => {
     try {
-    let projects = await Project.find({ "title": { "$regex": req.params.search, "$options": "i" } })
+    let projects = await Project.find({ "title": { "$regex": req.params.search, "$options": "i" } }).populate('user')
     if (projects.length == 0) throw {message: "couldn't find any project with that title"};
     // console.log(projects.length)
     res.status(200).json(projects)

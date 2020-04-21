@@ -40,9 +40,7 @@ export default class ProjectCard extends Component {
               ) : (
                 <Card.Text>Dony By : user deleted from the db</Card.Text>
               )}
-              <Button as={Link} to={`/api/project/${_id}`} variant="primary">
-                More Info
-              </Button>
+              
             </Card.Body>
 
             <Card.Footer className="text-muted bg-dark">

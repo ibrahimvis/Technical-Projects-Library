@@ -13,7 +13,7 @@ export default class EditUser extends Component {
 
   componentDidMount() {
     this.setState({
-        _id: this.props.user._id
+      _id: this.props.user._id,
     });
   }
 
@@ -22,7 +22,7 @@ export default class EditUser extends Component {
       let data = await axios.post("/api/admin/edit/user/", this.state, {
         headers: { "x-auth-token": localStorage.getItem("token") },
       });
-      console.log(data.data)
+      console.log(data.data);
     } catch (error) {
       console.log(error);
     }
@@ -62,21 +62,24 @@ export default class EditUser extends Component {
                       label={`Super admin`}
                     />
                   </Form.Row>
-                  <Button
-                    className="ml-5 mr-2"
-                    variant="primary"
-                    type="button"
-                    onClick={(e) => this.changeUserType(e)}
-                  >
-                    Submit
-                  </Button>
-                  <Button
-                    variant="primary"
-                    type="button"
-                    onClick={() => this.props.onCloseClick()}
-                  >
-                    Close
-                  </Button>
+                  <div>
+                    <Button
+                      variant="success"
+                      block
+                      type="button"
+                      onClick={(e) => this.changeUserType(e)}
+                    >
+                      Submit
+                    </Button>
+                    <Button
+                      variant="success"
+                      block
+                      type="button"
+                      onClick={() => this.props.onCloseClick()}
+                    >
+                      Close
+                    </Button>
+                  </div>
                 </Col>
               </Row>
             </Form>

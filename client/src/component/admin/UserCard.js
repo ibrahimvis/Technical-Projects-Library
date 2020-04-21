@@ -30,11 +30,23 @@ export default class UserCard extends Component {
         <td>{lastName}</td>
         <td>{email}</td>
         <td>
-          <Button onClick={() => this.props.onEditClick()}>Edit</Button>
+          <Button
+            variant="success"
+            block
+            onClick={() => this.props.onEditClick()}
+          >
+            Edit
+          </Button>
         </td>
         <td>
-          <Button onClick={(e) => this.deleteUser(e, _id)}>Delete</Button>
-        </td>        
+          <Button
+            onClick={(e) => this.deleteUser(e, _id)}
+            variant="success"
+            block
+          >
+            Delete
+          </Button>
+        </td>
       </tr>
     ) : (
       <></>
