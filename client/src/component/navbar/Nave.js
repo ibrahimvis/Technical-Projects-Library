@@ -25,7 +25,7 @@ export default class Nave extends Component {
     );
     return (
       <div>
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="success" variant="dark">
           <Nav className="mr-auto">
             <Navbar.Brand>Technical Projects Library</Navbar.Brand>
           </Nav>
@@ -36,6 +36,8 @@ export default class Nave extends Component {
             {authNavDetails}
           </Nav>
         </Navbar>
+
+        
       </div>
     );
   }
