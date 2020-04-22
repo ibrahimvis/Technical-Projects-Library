@@ -1,9 +1,16 @@
 import React, { Component } from "react";
 import { Row, Form, Col, Button, Container, Card } from "react-bootstrap";
 import Axios from "axios";
+import { Alert } from "react-bootstrap";
 
 export default class Signup extends Component {
-  state = {};
+
+  
+  state = {
+   errSigup :false
+  };
+
+ 
 
   registerHandler = async (e) => {
     e.preventDefault();
@@ -14,10 +21,20 @@ export default class Signup extends Component {
           this.props.history.push("/login");
         } else {
           console.log(res);
+this.setState({isSignup:true})
         }
       })
-      .catch((err) => console.log(err));
+
+      .catch((err) => {
+        
+       this.setState({errSigup: true})
+        setTimeout(() => {
+          this.setState({errSigup:false})
+        }, 4000);
+        console.log("email or password not correct");
+      })
   };
+
 
   changeHandler = (e) => {
     let temp = { ...this.state };
@@ -28,6 +45,12 @@ export default class Signup extends Component {
   render() {
     return (
       <>
+
+{this.state.errSigup && (
+        <Alert variant={"danger"}>
+          Email is exist, Please use another email !!
+        </Alert>
+      )}
         <Container className="mt-5 row justify-content-center" fluid>
           <Row className="justify-content-center mt-5">
             <Col md={12} className="m-2">
