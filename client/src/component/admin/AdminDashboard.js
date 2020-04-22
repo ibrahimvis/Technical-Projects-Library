@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table, Button } from "react-bootstrap";
+import { Table, Button, Row, Col, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Allusers from "./AllUsers";
@@ -56,66 +56,72 @@ export default class AdminDashboard extends Component {
   render() {
     return (
       <div>
-        <div className="d-flex justify-content-center mb-3">
-          <Button
-            className="mr-2 btn btn-success btn-lg"
-            type="button"
-            onClick={this.showUsers}
-          >
-            Users
-          </Button>
-          <Button
-            className="btn btn-success btn-lg"
-            type="button"
-            onClick={this.showProjects}
-          >
-            Projects
-          </Button>
-        </div>
-        {this.state.editClicked ? (
-          <EditUser
-            user={this.state.currentUser}
-            onEditClick={this.showEditPopup.bind(this)}
-            onCloseClick={this.closeEditPopup.bind(this)}
-          />
-        ) : (
-          <></>
-        )}
-        {this.state.editProjectClicked ? (
-          <EditProject
-            project={this.state.currentProject}
-            onEditClick={this.showEditPopupProject.bind(this)}
-            onCloseClick={this.closeEditProjectPopup.bind(this)}
-            update={this.getData}
-          />
-        ) : (
-          <></>
-        )}
-        {this.state.showUsers ? (
-          <Table striped bordered hover>
-            {this.state.users ? (
-              <Allusers
-                users={this.state.users}
-                onEditClick={this.showEditPopup.bind(this)}
-              />
-            ) : (
-              <></>
-            )}
-          </Table>
-        ) : null}
+        <Container className="mt-5" fluid>
+          <Row className="justify-content-center mt-5 mb-5">
+            <Button
+              className="mr-2 btn btn-success btn-lg"
+              type="button"
+              onClick={this.showUsers}
+            >
+              Users Panel
+            </Button>
 
-        {this.state.showProjects ? (
-          <Table striped bordered hover>
-            {this.state.projects ? (
-              <Allprojects
-                projects={this.state.projects}
-                onEditClick={this.showEditPopupProject.bind(this)}
+            <Button
+              className="btn btn-success btn-lg"
+              type="button"
+              onClick={this.showProjects}
+            >
+              Projects Panel
+            </Button>
+          </Row>
+
+          <Row className="justify-content-center mt-5 mb-5">
+            {this.state.editClicked ? (
+              <EditUser
+                user={this.state.currentUser}
+                onEditClick={this.showEditPopup.bind(this)}
+                onCloseClick={this.closeEditPopup.bind(this)}
               />
             ) : (
               <></>
             )}
-          </Table>
-        ) : null}
+            {this.state.editProjectClicked ? (
+              <EditProject
+                project={this.state.currentProject}
+                onEditClick={this.showEditPopupProject.bind(this)}
+                onCloseClick={this.closeEditProjectPopup.bind(this)}
+                update={this.getData}
+              />
+            ) : (
+              <></>
+            )}
+            {this.state.showUsers ? (
+              <Table striped bordered hover>
+                {this.state.users ? (
+                  <Allusers
+                    users={this.state.users}
+                    onEditClick={this.showEditPopup.bind(this)}
+                  />
+                ) : (
+                  <></>
+                )}
+              </Table>
+            ) : null}
+
+            {this.state.showProjects ? (
+              <Table striped bordered hover>
+                {this.state.projects ? (
+                  <Allprojects
+                    projects={this.state.projects}
+                    onEditClick={this.showEditPopupProject.bind(this)}
+                  />
+                ) : (
+                  <></>
+                )}
+              </Table>
+            ) : null}
+          </Row>
+        </Container>
       </div>
     );
   }

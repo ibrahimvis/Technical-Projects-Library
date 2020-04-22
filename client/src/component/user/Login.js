@@ -20,6 +20,7 @@ export const Login = (props) => {
         if (res.data.token) {
           localStorage.setItem("token", res.data.token);
           props.history.push("/allproject");
+          props.authLogin();
           props.userLogin(localStorage.getItem("token"));
         } else {
           console.log("email or password not correct");
@@ -27,6 +28,7 @@ export const Login = (props) => {
       })
       .catch((err) => console.log(err));
   };
+
   return (
     <>
       <Container className="mt-5 row justify-content-center" fluid>
