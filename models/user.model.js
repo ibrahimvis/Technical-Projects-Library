@@ -28,6 +28,11 @@ let userSchema = new mongoose.Schema({
     default: false
   },
 
+  isSuperAdmin: {
+    type: Boolean,
+    default: false
+  },
+
   project: [
       {
           type: mongoose.Schema.Types.ObjectId,
