@@ -10,23 +10,38 @@ export default class Profile extends Component {
     project: [], //make it array og obj
   };
 
+  deleteTheProject = (project) => {
+    // console.log("HERE");
+    let tempArr = this.state.project.filter((ele) => (ele._id != project._id));
+    
+    let temp = {...this.state};
+    temp["project"] = tempArr;
+    this.setState(temp);
+  };
+
   componentDidMount() {
-    console.log("sdd");
+    // console.log("sdd");
     axios
-      .get(`http://localhost:3002/api/profile/${this.state.user._id}`)
+      .get(`/api/profile/${this.state.user._id}`)
       .then((res) => {
         this.setState({
           project: res.data.project,
         });
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => console.log(err));
   }
 
   render() {
-    console.log(this.state.project);
+    // console.log(this.state.project);
     let allproject = this.state.project.map((project) => {
-      return <UserProjectCard project={project} key={project._id} />;
+      return (
+        <UserProjectCard
+          project={project}
+          key={project._id}
+          deleteProject={() => this.deleteTheProject(project)}
+        />
+      );
     });
 
     // allproject = this.state.project

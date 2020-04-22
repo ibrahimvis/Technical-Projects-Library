@@ -17,12 +17,12 @@ export default class UserProjectCard extends Component {
     try {
       let token = localStorage.getItem("token");
 
-      let projectDeleted = await Axios.delete(
-        `http://localhost:3002/api/project/delete/${this.props.project._id}`,
+      let projectDeleted = await Axios.get(
+        `/api/project/delete/${this.props.project._id}`,
         { headers: { "x-auth-token": token } }
       );
-      console.log(projectDeleted);
-
+      // console.log(projectDeleted);
+      this.props.deleteProject(this.props.project);
       this.props.history.push("/profile");
     } catch (error) {}
   };
@@ -30,7 +30,7 @@ export default class UserProjectCard extends Component {
   render() {
     // console.log(localStorage.getItem("token") == null);
     let { title, user, _id, image } = this.props.project;
-    console.log(this.props.project);
+    // console.log(this.props.project);
     // if (!localStorage.getItem) {
     //   console.log("empty");
     // } else {
