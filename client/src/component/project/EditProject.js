@@ -47,7 +47,7 @@ export default class EditProject extends Component {
   render() {
     // let { user } = this.state;
     // console.log(user);
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <div>
         {this.state.project && (
@@ -76,14 +76,13 @@ export default class EditProject extends Component {
                 custom
               /> */}
                         <Form.Control
-                          placeholder="image"
                           name="image"
-                          value={this.state.project.gitimagehub}
+                          value={this.state.project.image}
                           onChange={(e) => this.changeHandler(e)}
                         />
                       </Form.Group>
                       <Form.Group>
-                        <Form.Label>Title</Form.Label>
+                        <Form.Label>Title:</Form.Label>
                         <Form.Control
                           name="title"
                           value={this.state.project.title}
@@ -91,7 +90,7 @@ export default class EditProject extends Component {
                         />
                       </Form.Group>
                       <Form.Group>
-                        <Form.Label>Contributor</Form.Label>
+                        <Form.Label>Contributor:</Form.Label>
                         <Form.Control
                           name="contributor"
                           value={this.state.project.contributor}
@@ -99,7 +98,7 @@ export default class EditProject extends Component {
                         />
                       </Form.Group>
                       <Form.Group>
-                        <Form.Label>Description</Form.Label>
+                        <Form.Label>Description:</Form.Label>
                         <Form.Control
                           as="textarea"
                           rows="3"
@@ -109,7 +108,7 @@ export default class EditProject extends Component {
                         />
                       </Form.Group>
                       <Form.Group>
-                        <Form.Label>Github Link</Form.Label>
+                        <Form.Label>Github:</Form.Label>
 
                         <Form.Control
                           name="github"

@@ -36,7 +36,10 @@ export default class EditProject extends Component {
       let data = await axios.post("/api/admin/edit/project/", this.state, {
         headers: { "x-auth-token": localStorage.getItem("token") },
       });
+
+      this.props.update();
       this.props.onCloseClick();  
+
     } catch (error) {
       console.log(error);
     }
@@ -49,7 +52,7 @@ export default class EditProject extends Component {
         <div className="popup_inner_Project">
           <Container>
             <Form.Group>
-              <Form.Label>Image</Form.Label>
+              <Form.Label>Image:</Form.Label>
               {/* <Form.File
               name="image"
               id="formcheck-api-regular"
@@ -65,7 +68,7 @@ export default class EditProject extends Component {
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label>Title</Form.Label>
+              <Form.Label>Title:</Form.Label>
               <Form.Control
                 name="title"
                 onChange={(e) => this.changeHandler(e)}
@@ -73,7 +76,7 @@ export default class EditProject extends Component {
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label>Contributor</Form.Label>
+              <Form.Label>Contributor:</Form.Label>
               <Form.Control
                 name="contributor"
                 onChange={(e) => this.changeHandler(e)}
@@ -81,7 +84,7 @@ export default class EditProject extends Component {
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label>Description</Form.Label>
+              <Form.Label>Description:</Form.Label>
               <Form.Control
                 as="textarea"
                 rows="3"
@@ -91,24 +94,39 @@ export default class EditProject extends Component {
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label>Github Link</Form.Label>
+              <Form.Label>Github:</Form.Label>
               <Form.Control
                 name="github"
                 value={this.state.github}
                 onChange={(e) => this.changeHandler(e)}
               />
             </Form.Group>
-            <Button variant="success" block type="button" block onClick={() => this.updateProject()}>
-              Edit Project
-            </Button>
-            <Button
-              variant="success"
-              block
-              type="button"
-              onClick={() => this.props.onCloseClick()}
-            >
-              Close
-            </Button>
+
+            <div className="container">
+              <div className="row">
+                <div className="col-sm">
+                  <Button
+                    variant="primary"
+                    type="button"
+                    block
+                    onClick={() => this.updateProject()}
+                  >
+                    Edit Project
+                  </Button>
+                </div>
+
+                <div className="col-sm">
+                  <Button
+                    variant="danger"
+                    type="button"
+                    block
+                    onClick={() => this.props.onCloseClick()}
+                  >
+                    Close
+                  </Button>
+                </div>
+              </div>
+            </div>
           </Container>
         </div>
       </div>

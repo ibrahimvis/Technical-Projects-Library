@@ -29,7 +29,7 @@ router.get("/delete/user/:id", isLoggedIn, async (req, res) => {
 
       user.project.forEach(e => {
         Project.findByIdAndDelete(e._id).then(p => {
-          console.log(p);
+          //console.log(p);
         }).catch(e => console.log(e))
       })
 
@@ -42,7 +42,7 @@ router.get("/delete/user/:id", isLoggedIn, async (req, res) => {
   }
 });
 
-router.get("/delete/project/:id", async (req, res) => {
+router.get("/delete/project/:id", isLoggedIn, async (req, res) => {
   if (!req.user.isSuperAdmin) {
     res.status(403).json("Not Cool");
   } else {

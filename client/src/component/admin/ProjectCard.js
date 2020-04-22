@@ -41,7 +41,7 @@ export default class ProjectCard extends Component {
         )}
         <td>
           <Button
-            variant="success"
+            variant="primary"
             block
             onClick={() => this.props.onEditClick()}
           >
@@ -51,7 +51,7 @@ export default class ProjectCard extends Component {
         <td>
           <Button
             onClick={(e) => this.deleteProject(e, _id)}
-            variant="success"
+            variant="danger"
             block
           >
             Delete
