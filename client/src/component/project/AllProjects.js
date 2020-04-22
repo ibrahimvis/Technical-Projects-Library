@@ -5,28 +5,45 @@ import axios from "axios";
 export default class AllProjects extends Component {
   state = {
     allproject: [],
+    findAny: true,
   };
   componentDidMount() {
+    this.getData();
+  }
+
+  getData = () => {
     axios
       .get("/api/project/")
       .then((res) => {
         this.setState({
           allproject: res.data.projects,
         });
-        console.log(res.data.projects);
+        // console.log(res.data.projects);
       })
       .catch((err) => console.log(err));
-  }
+  };
 
   searchHandler = (e) => {
-    axios
-      .get(`/api/search/${e.target.value}`)
-      .then((res) => {
-        this.setState({
-          allproject: res.data,
-        });
-      })
-      .catch((err) => console.log(err));
+    if (e.target.value === "") {
+      this.getData();
+    } else {
+      axios
+        .get(`/api/search/${e.target.value}`)
+        .then((res) => {
+          if (Array.isArray(res.data)) {
+            this.setState({
+              allproject: res.data,
+              findAny: true,
+            });
+          } else {
+            this.setState({
+              allproject: [],
+              findAny: false,
+            });
+          }
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   render() {
@@ -48,7 +65,13 @@ export default class AllProjects extends Component {
 
           <Row className="mt-5 mb-5 justify-content-center">
             <Col md={12}>
-              <Row className="mt-5 justify-content-center">{allproject}</Row>
+              {this.state.findAny ? (
+                <Row className="mt-5 justify-content-center">{allproject}</Row>
+              ) : (
+                <Row className="mt-5 justify-content-center">
+                  Couldn't Find Any Project with that title
+                </Row>
+              )}
             </Col>
           </Row>
         </Container>

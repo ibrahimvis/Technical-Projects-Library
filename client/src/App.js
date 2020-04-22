@@ -79,7 +79,7 @@ export default class App extends Component {
   render() {
     const { isAuth, message, user } = this.state;
     // console.log(thi);
-    console.log(this.state.isAuth);
+    // console.log(this.state.isAuth);
 
     return (
       <div>
