@@ -4,13 +4,9 @@ import Axios from "axios";
 import { Alert } from "react-bootstrap";
 
 export default class Signup extends Component {
-
-  
   state = {
-   errSigup :false
+    errSigup: false,
   };
-
- 
 
   registerHandler = async (e) => {
     e.preventDefault();
@@ -21,20 +17,16 @@ export default class Signup extends Component {
           this.props.history.push("/login");
         } else {
           console.log(res);
-this.setState({isSignup:true})
         }
       })
-
       .catch((err) => {
-        
-       this.setState({errSigup: true})
+        this.setState({ errSigup: true });
         setTimeout(() => {
-          this.setState({errSigup:false})
+          this.setState({ errSigup: false });
         }, 4000);
         console.log("email or password not correct");
-      })
+      });
   };
-
 
   changeHandler = (e) => {
     let temp = { ...this.state };
@@ -45,12 +37,11 @@ this.setState({isSignup:true})
   render() {
     return (
       <>
-
-{this.state.errSigup && (
-        <Alert variant={"danger"}>
-          Email is exist, Please use another email !!
-        </Alert>
-      )}
+        {this.state.errSigup && (
+          <Alert variant={"danger"}>
+            Email is exist, Please use another email !!
+          </Alert>
+        )}
         <Container className="mt-5 row justify-content-center" fluid>
           <Row className="justify-content-center mt-5">
             <Col md={12} className="m-2">
