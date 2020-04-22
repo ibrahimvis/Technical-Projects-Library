@@ -36,7 +36,10 @@ export default class EditProject extends Component {
       let data = await axios.post("/api/admin/edit/project/", this.state, {
         headers: { "x-auth-token": localStorage.getItem("token") },
       });
-      this.props.onCloseClick();
+
+      this.props.update();
+      this.props.onCloseClick();  
+
     } catch (error) {
       console.log(error);
     }

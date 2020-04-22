@@ -16,7 +16,7 @@ export default class CreateProject extends Component {
         },
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.status == 200) {
           this.props.history.push("/profile");
         }
@@ -35,7 +35,7 @@ export default class CreateProject extends Component {
   render() {
     // let { user } = this.state;
     // console.log(user);
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <div>
         <Container className="mt-5 mb-5 row justify-content-md-center" fluid>

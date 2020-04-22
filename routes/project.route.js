@@ -69,7 +69,7 @@ router.post("/update", isLoggedIn, async (req, res) => {
 });
 
 /** Delete One Project By ID */
-router.delete("/delete/:id", isLoggedIn, async (req, res) => {
+router.get("/delete/:id", isLoggedIn, async (req, res) => {
   try {
     let project = await Project.findByIdAndDelete(req.params.id);
     res.status(200).json({ project });

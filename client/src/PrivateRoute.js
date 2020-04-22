@@ -21,7 +21,7 @@ export default function PrivateRoute({
           isAuth ? <Component {...rest} {...props} /> : <Redirect to="/login" />
         }
       />
-      {console.log(isAuth)}
+      {/* {console.log(isAuth)} */}
     </>
   );
 }
