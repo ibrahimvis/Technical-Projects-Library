@@ -14,6 +14,9 @@ import AdminDashboard from "./component/admin/AdminDashboard";
 import axios from "axios";
 import { decode } from "jsonwebtoken";
 import PrivateRoute from "./PrivateRoute";
+import { Alert } from "react-bootstrap";
+import jwt_decode from "jwt-decode";
+
 require("dotenv").config();
 
 export default class App extends Component {
@@ -24,6 +27,8 @@ export default class App extends Component {
     isLogin: false,
     waiting: false,
   };
+
+ 
 
   logoutHandler = (e) => {
     e.preventDefault();
@@ -55,15 +60,33 @@ export default class App extends Component {
         message: null,
         waiting: true,
       });
+
+      // if (localStorage.token) {
+      //   let token = localStorage.token;
+      //   let user = jwt_decode(token, "S").user;
+      //   this.setState({
+      //     user: user,
+      //     isLogin: true,
+      //   });
+      // } else {
+      //   this.setState({
+      //     user: null,
+      //     isLogin: false,
+      //   });
+      // }
+    
     } catch (err) {
       this.setState({
         user: null,
         isAuth: false,
         waiting: true,
-        // message: err.response.data.message,
+   message: err.response.data.message,
       });
+      console.log (err.response.data.message)
     }
   };
+
+  
 
   componentDidMount() {
     let token = localStorage.getItem("token");
@@ -82,10 +105,15 @@ export default class App extends Component {
     const { isAuth, message, user } = this.state;
     // console.log(thi);
     // console.log(this.state.isAuth);
+    const errorMessage = message ? (
+      <Alert variant="danger">{message}</Alert>
+    ) : null;
+
 
     return (
       <div>
         <Nave user={user} logout={this.logoutHandler} />
+        { errorMessage}
         <Switch>
           <Route exact path="/" component={AllProjects} />
           <Route
