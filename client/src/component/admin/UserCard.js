@@ -31,7 +31,7 @@ export default class UserCard extends Component {
         <td>{email}</td>
         <td>
           <Button
-            variant="success"
+            variant="primary"
             block
             onClick={() => this.props.onEditClick()}
           >
@@ -41,7 +41,7 @@ export default class UserCard extends Component {
         <td>
           <Button
             onClick={(e) => this.deleteUser(e, _id)}
-            variant="success"
+            variant="danger"
             block
           >
             Delete

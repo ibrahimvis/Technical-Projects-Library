@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import ProjectCard from "./ProjectCard";
 import axios from "axios";
 export default class AllProjects extends Component {
@@ -72,11 +72,14 @@ export default class AllProjects extends Component {
         <Container className="mt-5" fluid>
           {/* <Image src="holder.js/100px250" fluid /> */}
 
-          <input
-            type="text"
-            placeholder="search"
-            onChange={this.searchHandler}
-          />
+          <Row className="mt-5 justify-content-center">
+              <input size="40"
+                type="text"
+                placeholder="Search by Title. . . ."
+                onChange={this.searchHandler}
+              />
+          </Row>
+
 
           <Row className="mt-5 mb-5 justify-content-center">
             <Col md={12}>
@@ -89,6 +92,7 @@ export default class AllProjects extends Component {
               )}
             </Col>
           </Row>
+
         </Container>
       </div>
     );

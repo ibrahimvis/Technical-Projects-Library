@@ -80,6 +80,7 @@ export default class Profile extends Component {
               </Button>
             </Col>
           </Row>
+          
           <Row className="mt-5 justify-content-center">
             <Col md={12}>
               <Row className="justify-content-center"> {allproject}</Row>

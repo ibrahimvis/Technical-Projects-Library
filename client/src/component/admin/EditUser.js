@@ -63,30 +63,91 @@ export default class EditUser extends Component {
                     />
                   </Form.Row>
                   <div>
-                    <Button
-                      variant="success"
-                      block
-                      type="button"
-                      onClick={(e) => this.changeUserType(e)}
-                    >
-                      Submit
-                    </Button>
-                    <Button
-                      variant="success"
-                      block
-                      type="button"
-                      onClick={() => this.props.onCloseClick()}
-                    >
-                      Close
-                    </Button>
+                    <div className="container">
+                      <div className="row">
+                        <div className="col-sm">
+                          <Button
+                            variant="primary"
+                            type="button"
+                            onClick={(e) => this.changeUserType(e)}
+                            block
+                          >
+                            Submit
+                          </Button>
+                        </div>
+
+                        <div className="col-sm">
+                          <Button
+                            variant="danger"
+                            type="button"
+                            onClick={() => this.props.onCloseClick()}
+                            block
+                          >
+                            Close
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </Col>
               </Row>
             </Form>
           </div>
         </div>
-        );
       </>
     );
   }
+}
+
+{
+  /* <div className="popup">
+  <Modal.Dialog>
+    <Modal.Header>
+      <Modal.Title>Edit User Type</Modal.Title>
+    </Modal.Header>
+    <Form>
+      <Modal.Body>
+        <Form.Row>
+          <Form.Check
+            onChange={this.onChangeHandler}
+            className="mr-2"
+            custom
+            type="checkbox"
+            id={`isAdmin`}
+            label={`Admin`}
+          />
+        </Form.Row>
+
+        <Form.Row>
+          <Form.Check
+            onChange={this.onChangeHandler}
+            className="mb-2"
+            custom
+            type="checkbox"
+            id={`isSuperAdmin`}
+            label={`Super admin`}
+          />
+        </Form.Row>
+      </Modal.Body>
+
+      <Modal.Footer>
+        <Button
+          variant="primary"
+          type="button"
+          onClick={(e) => this.changeUserType(e)}
+        >
+          Submit
+        </Button>
+
+        <Button
+          variant="danger"
+          type="button"
+          onClick={() => this.props.onCloseClick()}
+        >
+          Close
+        </Button>
+      </Modal.Footer>
+    </Form>
+  </Modal.Dialog>
+</div>; */
 }
