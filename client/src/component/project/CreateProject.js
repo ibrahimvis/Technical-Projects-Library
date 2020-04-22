@@ -10,7 +10,7 @@ export default class CreateProject extends Component {
   createHandler = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3002/api/project/create", this.state, {
+      .post("/api/project/create", this.state, {
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
