@@ -47,7 +47,7 @@ export default class EditProject extends Component {
   render() {
     // let { user } = this.state;
     // console.log(user);
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <div>
         {this.state.project && (

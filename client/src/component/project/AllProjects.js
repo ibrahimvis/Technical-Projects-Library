@@ -7,6 +7,16 @@ export default class AllProjects extends Component {
     allproject: [],
     findAny: true,
   };
+
+  deleteTheProject = (project) => {
+    // console.log("HERE");
+    let tempArr = this.state.allproject.filter((ele) => (ele._id != project._id));
+    
+    let temp = {...this.state};
+    temp["allproject"] = tempArr;
+    this.setState(temp);
+  };
+
   componentDidMount() {
     this.getData();
   }
@@ -49,7 +59,12 @@ export default class AllProjects extends Component {
   render() {
     // console.log(this.state.allproject);
     let allproject = this.state.allproject.map((project) => (
-      <ProjectCard project={project} key={project._id} />
+      <ProjectCard 
+      project={project} 
+      key={project._id} 
+      getData={() => this.getData()}
+      deleteProject={() => this.deleteTheProject(project)}
+      />
     ));
 
     return (

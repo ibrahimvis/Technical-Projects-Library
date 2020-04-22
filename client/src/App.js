@@ -35,11 +35,13 @@ export default class App extends Component {
       message: null,
     });
   };
+
   authLogin = () => {
     this.setState({
       isAuth: true,
     });
   };
+
   userLogin = async (token) => {
     try {
       let data = await axios.get("/api/auth/user", {
