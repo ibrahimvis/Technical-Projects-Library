@@ -8,7 +8,7 @@ export default class Nave extends Component {
       <>
         {this.props.user.isSuperAdmin ? (
           <Nav.Link as={Link} to="/admin" user={this.props.user}>
-            Admin Dashboard
+            Dashboard
           </Nav.Link>
         ) : (
           <></>

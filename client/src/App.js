@@ -63,6 +63,8 @@ export default class App extends Component {
         // message: err.response.data.message,
       });
     }
+
+    console.log(this.state.message)
   };
 
   componentDidMount() {
