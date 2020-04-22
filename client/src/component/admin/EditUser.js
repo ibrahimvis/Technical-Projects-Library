@@ -23,6 +23,7 @@ export default class EditUser extends Component {
         headers: { "x-auth-token": localStorage.getItem("token") },
       });
       console.log(data.data);
+      this.props.onCloseClick()
     } catch (error) {
       console.log(error);
     }
