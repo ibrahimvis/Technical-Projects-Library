@@ -9,8 +9,8 @@ export default class AllProjects extends Component {
           <tr>
             <th>#</th>
             <th>Title</th>
-            <th>Author</th>
-            <th>email</th>
+            <th>Created By</th>
+            <th>Email Address</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>

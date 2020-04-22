@@ -68,7 +68,7 @@ export default class ProjectCard extends Component {
 
               {!(user == null) ? (
                 <Card.Text>
-                  {user.firstName} {user.lastName}
+                 {user.firstName} {user.lastName}
                 </Card.Text>
               ) : (
                 <Card.Text>Dony By : user deleted from the db</Card.Text>

@@ -46,15 +46,14 @@
   left: 0;
   right: 0;
   bottom: 0;
-  margin: auto;
   background-color: rgba(0, 0, 0, 0.5);
 }
 .popup_inner {
   position: absolute;
-  left: 35%;
-  right: 35%;
+  left: 34%;
+  right: 34%;
   top: 35%;
-  bottom: 40%;
+  bottom: 35%;
   margin: auto;
   border-radius: 20px;
   background: white;
@@ -73,10 +72,12 @@
 }
 .popup_inner_Project {
   position: absolute;
-  left: 10%;
-  right: 10%;
-  top: 10%;
-  bottom: 20%;
+
+  left: 25%;
+  right: 25%;
+  top: 4%;
+  bottom: 4%;
+
   margin: auto;
   border-radius: 20px;
   background: white;

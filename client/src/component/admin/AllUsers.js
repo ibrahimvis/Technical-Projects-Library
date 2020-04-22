@@ -12,7 +12,7 @@ export default class AllUsers extends Component {
             <th>#</th>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Email</th>
+            <th>Email Address</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
