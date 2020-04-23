@@ -67,7 +67,7 @@ export default class ProjectCard extends Component {
               /> */}
 
               {!(user == null) ? (
-                <Card.Text>
+                <Card.Text className="text-center">
                  {user.firstName} {user.lastName}
                 </Card.Text>
               ) : (
