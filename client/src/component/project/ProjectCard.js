@@ -71,7 +71,7 @@ export default class ProjectCard extends Component {
                  {user.firstName} {user.lastName}
                 </Card.Text>
               ) : (
-                <Card.Text>Dony By : user deleted from the db</Card.Text>
+                <Card.Text className="text-center">Dony By : user deleted from the db</Card.Text>
               )}
             </Card.Body>
 
