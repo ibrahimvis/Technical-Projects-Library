@@ -12,9 +12,9 @@ export default class Profile extends Component {
 
   deleteTheProject = (project) => {
     // console.log("HERE");
-    let tempArr = this.state.project.filter((ele) => (ele._id != project._id));
-    
-    let temp = {...this.state};
+    let tempArr = this.state.project.filter((ele) => ele._id != project._id);
+
+    let temp = { ...this.state };
     temp["project"] = tempArr;
     this.setState(temp);
   };
@@ -55,32 +55,28 @@ export default class Profile extends Component {
     return (
       <div>
         <Container className="mt-5" fluid>
-          {/* <Form className="mt-5"> */}
           <Row className="justify-content-center mt-5">
-            <Col md={3}>
-              <Button
-                // className="ml-5"
-                as={Link}
-                to={`/ChangePassword`}
-                user={this.state.user}
-                variant="success"
-                block
-              >
-                Change Password
-              </Button>
+            <Button
+              className="mr-4 btn btn-primary btn-lg"
+              as={Link}
+              to={`/ChangePassword`}
+              user={this.state.user}
+              variant="info"
+            >
+              Change Password
+            </Button>
 
-              <Button
-                as={Link}
-                to={`/create`}
-                user={this.state.user}
-                variant="success"
-                block
-              >
-                Add New project
-              </Button>
-            </Col>
+            <Button
+              className="ml-4 btn btn-primary btn-lg"
+              as={Link}
+              to={`/create`}
+              user={this.state.user}
+              variant="info"
+            >
+              Add New project
+            </Button>
           </Row>
-          
+
           <Row className="mt-5 justify-content-center">
             <Col md={12}>
               <Row className="justify-content-center"> {allproject}</Row>

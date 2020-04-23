@@ -24,30 +24,30 @@ export default class UserCard extends Component {
     const { _id, firstName, lastName, email } = this.props.user;
     const index = this.props.index;
     return !this.state.isDeleted ? (
-      <tr>
-        <td>{index + 1}</td>
-        <td>{firstName}</td>
-        <td>{lastName}</td>
-        <td>{email}</td>
-        <td>
-          <Button
-            variant="primary"
-            block
-            onClick={() => this.props.onEditClick()}
-          >
-            Edit
-          </Button>
-        </td>
-        <td>
-          <Button
-            onClick={(e) => this.deleteUser(e, _id)}
-            variant="danger"
-            block
-          >
-            Delete
-          </Button>
-        </td>
-      </tr>
+          <tr>
+            <td>{index + 1}</td>
+            <td>{firstName}</td>
+            <td>{lastName}</td>
+            <td>{email}</td>
+            <td>
+              <Button
+                variant="primary"
+                block
+                onClick={() => this.props.onEditClick()}
+              >
+                Edit
+              </Button>
+            </td>
+            <td>
+              <Button
+                onClick={(e) => this.deleteUser(e, _id)}
+                variant="danger"
+                block
+              >
+                Delete
+              </Button>
+            </td>
+          </tr>
     ) : (
       <></>
     );

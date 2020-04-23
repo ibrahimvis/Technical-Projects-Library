@@ -96,9 +96,9 @@ export default class Signup extends Component {
                     </Form.Row>
                   </Card.Body>
 
-                  <Card.Footer className="text-muted bg-dark">
+                  <Card.Footer className="text-muted bg-secondary">
                     <Button
-                      variant="success"
+                      variant="dark"
                       type="submit"
                       onClick={(e) => this.registerHandler(e)}
                       block
