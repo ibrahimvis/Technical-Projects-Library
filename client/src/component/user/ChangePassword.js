@@ -63,10 +63,10 @@ export default class ChangePassword extends Component {
                       </Form.Group>
                     </Form.Row>
                   </Card.Body>
-                  <Card.Footer className="text-muted bg-dark">
+                  <Card.Footer className="text-muted bg-secondary">
                     <Button
                       className="mt-2"
-                      variant="success"
+                      variant="dark"
                       type="submit"
                       onClick={(e) => this.changePasswordHandler(e)}
                       block

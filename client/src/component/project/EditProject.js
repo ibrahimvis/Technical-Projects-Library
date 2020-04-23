@@ -119,7 +119,7 @@ export default class EditProject extends Component {
                     </Card.Body>
                     <Card.Footer className="text-muted bg-dark">
                       <Button
-                        variant="success"
+                        variant="info"
                         onClick={this.createHandler}
                         block
                       >

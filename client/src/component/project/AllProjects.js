@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Form } from "react-bootstrap";
+import { Container, Row, Col, Form, Image } from "react-bootstrap";
 import ProjectCard from "./ProjectCard";
 import axios from "axios";
 export default class AllProjects extends Component {
@@ -10,9 +10,9 @@ export default class AllProjects extends Component {
 
   deleteTheProject = (project) => {
     // console.log("HERE");
-    let tempArr = this.state.allproject.filter((ele) => (ele._id != project._id));
-    
-    let temp = {...this.state};
+    let tempArr = this.state.allproject.filter((ele) => ele._id != project._id);
+
+    let temp = { ...this.state };
     temp["allproject"] = tempArr;
     this.setState(temp);
   };
@@ -59,32 +59,31 @@ export default class AllProjects extends Component {
   render() {
     // console.log(this.state.allproject);
     let allproject = this.state.allproject.map((project) => (
-      <ProjectCard 
-      project={project} 
-      key={project._id} 
-      getData={() => this.getData()}
-      deleteProject={() => this.deleteTheProject(project)}
+      <ProjectCard
+        project={project}
+        key={project._id}
+        getData={() => this.getData()}
+        deleteProject={() => this.deleteTheProject(project)}
       />
     ));
 
     return (
       <div>
         <Container className="mt-5" fluid>
-          {/* <Image src="holder.js/100px250" fluid /> */}
 
           <Row className="mt-5 justify-content-center">
-              <input size="40"
-                type="text"
-                placeholder="Search by Title. . . ."
-                onChange={this.searchHandler}
-              />
+            <input
+              size="40"
+              type="text"
+              placeholder="Search by Title. . . ."
+              onChange={this.searchHandler}
+            />
           </Row>
-
 
           <Row className="mt-5 mb-5 justify-content-center">
             <Col md={12}>
               {this.state.findAny ? (
-                <Row className="mt-5 justify-content-center">{allproject}</Row>
+                <Row className="justify-content-center">{allproject}</Row>
               ) : (
                 <Row className="mt-5 justify-content-center">
                   Couldn't Find Any Project with that title
@@ -92,7 +91,6 @@ export default class AllProjects extends Component {
               )}
             </Col>
           </Row>
-
         </Container>
       </div>
     );

@@ -57,30 +57,30 @@ export default class ProjectCard extends Component {
             <Card.Img variant="top" src={image} height="200" width="200" />
             <Card.Body>
               <Card.Title className="text-warning">{title}</Card.Title>
-
+{/* 
               <hr
                 style={{
                   color: "#303030",
                   backgroundColor: "#303030",
                   borderColor: "#303030",
                 }}
-              />
+              /> */}
 
               {!(user == null) ? (
-                <Card.Text>
+                <Card.Text className="text-center">
                  {user.firstName} {user.lastName}
                 </Card.Text>
               ) : (
-                <Card.Text>Dony By : user deleted from the db</Card.Text>
+                <Card.Text className="text-center">Dony By : user deleted from the db</Card.Text>
               )}
             </Card.Body>
 
-            <Card.Footer className="text-muted bg-dark">
+            <Card.Footer className="text-muted bg-secondary">
               {" "}
               <Button
                 as={Link}
                 to={`/api/project/${_id}`}
-                variant="success"
+                variant="dark"
                 block
               >
                 More Details
