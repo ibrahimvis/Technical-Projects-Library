@@ -73,7 +73,7 @@ export default class EditUser extends Component {
                             onClick={(e) => this.changeUserType(e)}
                             block
                           >
-                            Submit
+                            Save
                           </Button>
                         </div>
 

@@ -95,7 +95,7 @@ export default class CreateProject extends Component {
 
 
                 <Card.Footer className="text-muted bg-dark">
-                  <Button variant="success" onClick={this.createHandler} block>
+                  <Button variant="info" onClick={this.createHandler} block>
                     Add New Project
                   </Button>
                 </Card.Footer>

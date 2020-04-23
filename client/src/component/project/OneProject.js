@@ -7,6 +7,7 @@ import {
   Container,
   ListGroup,
   ListGroupItem,
+  Badge,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
@@ -55,59 +56,43 @@ export default class OneProject extends Component {
 
                 <Card.Img variant="top" src={image} height="400" width="200" />
                 <Card.Body>
-                  <Card.Title className="text-warning text-center">
+                  {/* <Card.Title className="text-warning text-center">
                     {title}
-                  </Card.Title>
+                  </Card.Title> */}
 
-                  <Card.Text className="text-white">Contributor: </Card.Text>
+                  <h1>{title}</h1>
+                  
+                  <h5>Contributor:</h5>
+
+                  {/* <Card.Text className="text-white">Contributor: </Card.Text> */}
                   <Row>
-                    <Col className="text-black">{contributor}</Col>
+                    <p>{contributor}</p>
                   </Row>
 
-                  <hr
-                    style={{
-                      color: "#303030",
-                      backgroundColor: "#303030",
-                      borderColor: "#303030",
-                    }}
-                  />
+                  <h5>Description:</h5>
 
-                  <Card.Text className="text-white">Description: </Card.Text>
+                  {/* <Card.Text className="text-white">Description: </Card.Text> */}
+                  {/* <Badge variant="primary">Description:</Badge>{" "} */}
                   <Row>
-                    <Col>{description}</Col>
+                    <p>{description}</p>
                   </Row>
 
-                  <hr
-                    style={{
-                      color: "#303030",
-                      backgroundColor: "#303030",
-                      borderColor: "#303030",
-                    }}
-                  />
-
-                  <Card.Text className="text-white">Date Created: </Card.Text>
+                  <h5>Date Created: </h5>
+                  {/* <Card.Text className="text-white">Date Created: </Card.Text> */}
                   <Row>
-                    <Col>
-                      {" "}
-                      {<Moment format="YYYY/MM/DD" date={dateString} />}
-                    </Col>
+                    <p> {<Moment format="YYYY/MM/DD" date={dateString} />}</p>
                   </Row>
 
-                  <hr
-                    style={{
-                      color: "#303030",
-                      backgroundColor: "#303030",
-                      borderColor: "#303030",
-                    }}
-                  />
-                  <Card.Text className="text-white">GitHub:</Card.Text>
+                  <h5>GitHub: </h5>
+
+                  {/* <Card.Text className="text-white">GitHub:</Card.Text> */}
                   <Row>
-                    <Col>{github}</Col>
+                    <p>{github}</p>
                   </Row>
                 </Card.Body>
 
                 <Card.Footer className="text-muted bg-dark">
-                  <Button as={Link} to={`/allproject`} variant="success" block>
+                  <Button as={Link} to={`/allproject`} variant="info" block>
                     Go Back
                   </Button>
                 </Card.Footer>

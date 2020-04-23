@@ -6,9 +6,52 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://miro.medium.com/max/10944/1*Eh3ftzvlQzIPk-nhaPedTQ.jpeg");
+  background-repeat: repeat;
+  /* background-size: cover;
+  position: relative; */
+  background-position: center;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+nav {
+  background-color: black;
+  color: white;
+
+}
+
+h1 {
+  color: orange;
+  text-shadow: 2px 2px 5px gray;
+  font-weight: bold;
+  padding-top: 25px;
+  padding-left: 15px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+
+h5 {
+  font-family: font-family-sans-serif;
+  color: lightblue;
+  text-shadow: 2px 2px 5px black;
+  font-weight: bold;
+  padding-left: 15px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+}
+
+
+p {
+  font-family: "cursive";
+  color: whitesmoke;
+  text-align: center;
+  text-align: justify;
+  padding-left: 30px;
+  padding-right: 30px;
 }
