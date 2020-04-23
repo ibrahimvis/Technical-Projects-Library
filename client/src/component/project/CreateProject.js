@@ -49,50 +49,47 @@ export default class CreateProject extends Component {
                 <Card.Header className="bg-dark"></Card.Header>
 
                 <Card.Body>
-
-                <Form.Group>
-                  <Form.Label>Image: </Form.Label>
-                  {/* <Form.File
+                  <Form.Group>
+                    <Form.Label>Image: </Form.Label>
+                    {/* <Form.File
               name="image"
               id="formcheck-api-regular"
               label="Uploade image "
               lang="en"
               custom
             /> */}
-                  <Form.Control
-                    name="image"
-                    onChange={(e) => this.changeHandler(e)}
-                  />
-                </Form.Group>
+                    <Form.Control
+                      name="image"
+                      onChange={(e) => this.changeHandler(e)}
+                    />
+                  </Form.Group>
 
-                <Form.Group>
-                  <Form.Label>Title:</Form.Label>
-                  <Form.Control name="title" onChange={this.changeHandler} />
-                </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Title:</Form.Label>
+                    <Form.Control name="title" onChange={this.changeHandler} />
+                  </Form.Group>
 
-                <Form.Group>
-                  <Form.Label>Contributor:</Form.Label>
-                  <Form.Control
-                    name="contributor"
-                    onChange={this.changeHandler}
-                  />
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label>Description:</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    rows="3"
-                    name="description"
-                    onChange={this.changeHandler}
-                  />
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label>Github:</Form.Label>
-                  <Form.Control name="github" onChange={this.changeHandler} />
-                </Form.Group>
-
+                  <Form.Group>
+                    <Form.Label>Contributor:</Form.Label>
+                    <Form.Control
+                      name="contributor"
+                      onChange={this.changeHandler}
+                    />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Description:</Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      rows="3"
+                      name="description"
+                      onChange={this.changeHandler}
+                    />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Github:</Form.Label>
+                    <Form.Control name="github" onChange={this.changeHandler} />
+                  </Form.Group>
                 </Card.Body>
-
 
                 <Card.Footer className="text-muted bg-dark">
                   <Button variant="success" onClick={this.createHandler} block>
