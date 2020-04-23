@@ -109,19 +109,19 @@ but if you want to use an image from your computer you can use this website to g
 
 ## • Steps:
 
-## 1- Go to the website and hit START UPLODING button
+### 1- Go to the website and hit START UPLODING button
 
 ![app Logo](https://i.ibb.co/m86XMzw/readme-react.png)
 
-## 2- Select your image
+### 2- Select your image
 
 ![app Logo](https://i.ibb.co/Y0pG5gg/4.png)
 
-## 3- then hit UPLOAD
+### 3- then hit UPLOAD
 
 ![app Logo](https://i.ibb.co/5s6f5JL/3.png)
 
-## 4- Select HTML FULL Link then just copy this part to get your URL
+### 4- Select HTML FULL Link then just copy this part to get your URL
 
 ![app Logo](https://i.ibb.co/gFFNWYC/5.png)
 
