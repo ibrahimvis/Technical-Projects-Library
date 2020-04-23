@@ -7,7 +7,7 @@ export default class AllUsers extends Component {
   render() {
     return (
       <>
-        <thead>
+        <thead bgcolor="#FFFFFF">
           <tr>
             <th>#</th>
             <th>First Name</th>
@@ -17,7 +17,7 @@ export default class AllUsers extends Component {
             <th>Delete</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody bgcolor="#FFFFFF">
           {this.props.users.map((user, key) => {
             return <UserCard key={key} index={key} user={user} onEditClick={() => this.props.onEditClick(user)} />;
           })}

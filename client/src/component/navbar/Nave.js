@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export default class Nave extends Component {
@@ -32,7 +32,7 @@ export default class Nave extends Component {
     );
     return (
       <div>
-        <Navbar bg="success" variant="dark">
+        <Navbar bg="dark" variant="dark">
           <Nav className="mr-auto">
             <Navbar.Brand>Technical Projects Library</Navbar.Brand>
           </Nav>
@@ -43,8 +43,7 @@ export default class Nave extends Component {
             {authNavDetails}
           </Nav>
         </Navbar>
-
-        
+        {/* <Image src="https://miro.medium.com/max/10944/1*Eh3ftzvlQzIPk-nhaPedTQ.jpeg" className="center"/> */}
       </div>
     );
   }

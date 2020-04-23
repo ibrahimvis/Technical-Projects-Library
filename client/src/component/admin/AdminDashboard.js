@@ -5,7 +5,6 @@ import axios from "axios";
 import Allusers from "./AllUsers";
 import EditUser from "./EditUser";
 import EditProject from "./EditProject";
-
 import Allprojects from "./AllProjects";
 
 export default class AdminDashboard extends Component {
@@ -59,7 +58,7 @@ export default class AdminDashboard extends Component {
         <Container className="mt-5" fluid>
           <Row className="justify-content-center mt-5 mb-5">
             <Button
-              className="mr-2 btn btn-success btn-lg"
+              className="mr-4 btn btn-info btn-lg"
               type="button"
               onClick={this.showUsers}
             >
@@ -67,7 +66,7 @@ export default class AdminDashboard extends Component {
             </Button>
 
             <Button
-              className="btn btn-success btn-lg"
+              className="ml-4 btn btn-info btn-lg"
               type="button"
               onClick={this.showProjects}
             >
@@ -157,5 +156,4 @@ export default class AdminDashboard extends Component {
       currentProject: null,
     });
   }
-
 }

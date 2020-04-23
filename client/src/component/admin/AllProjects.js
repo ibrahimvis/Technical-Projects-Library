@@ -5,7 +5,8 @@ export default class AllProjects extends Component {
   render() {
     return (
       <>
-        <thead>
+
+        <thead bgcolor="#FFFFFF">
           <tr>
             <th>#</th>
             <th>Title</th>
@@ -15,7 +16,7 @@ export default class AllProjects extends Component {
             <th>Delete</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody bgcolor="#FFFFFF">
           {this.props.projects.map((project, key) => {
             return (
               <ProjectCard
