@@ -60,8 +60,8 @@ export default class OneProject extends Component {
                     {title}
                   </Card.Title> */}
 
-                  <h1>{title}</h1>
-                  
+                  <h2>{title}</h2>
+
                   <h5>Contributor:</h5>
 
                   {/* <Card.Text className="text-white">Contributor: </Card.Text> */}
