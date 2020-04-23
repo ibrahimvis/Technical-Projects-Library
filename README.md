@@ -165,10 +165,4 @@ yarn master
 
 ## Team members:
 
-### -Ghadeer Abdulaziz
-
-### -Halah Al-yanbawi
-
-### -Ibrahim Ahmad
-
-### -Lujen Babunji
+### Ghadeer Abdulaziz - Halah Al-yanbawi - Ibrahim Ahmad - Lujen Babunji
