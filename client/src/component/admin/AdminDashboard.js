@@ -5,7 +5,6 @@ import axios from "axios";
 import Allusers from "./AllUsers";
 import EditUser from "./EditUser";
 import EditProject from "./EditProject";
-
 import Allprojects from "./AllProjects";
 
 export default class AdminDashboard extends Component {
@@ -157,5 +156,4 @@ export default class AdminDashboard extends Component {
       currentProject: null,
     });
   }
-
 }
